@@ -360,7 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1286349565}
   offset: 0
-  dynamicOffset: {x: 0, y: 1}
+  dynamicOffset: {x: 0, y: -1}
   smoothSpeed: 0.2
 --- !u!1 &1286349561
 GameObject:
