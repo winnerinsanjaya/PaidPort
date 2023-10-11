@@ -287,8 +287,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1001.1982, y: 398}
-  m_SizeDelta: {x: 264.625, y: 64.092}
+  m_AnchoredPosition: {x: 1001.1982, y: 414.283}
+  m_SizeDelta: {x: 264.625, y: 65}
   m_Pivot: {x: 3.04, y: 4.36}
 --- !u!114 &284398384
 MonoBehaviour:
@@ -531,7 +531,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 1001.1982, y: 477}
-  m_SizeDelta: {x: 264.625, y: 64.402}
+  m_SizeDelta: {x: 264.625, y: 65}
   m_Pivot: {x: 3.04, y: 4.36}
 --- !u!114 &561492072
 MonoBehaviour:
@@ -665,7 +665,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 1001.1982, y: 536.5741}
-  m_SizeDelta: {x: 264.625, y: 61.24}
+  m_SizeDelta: {x: 264.625, y: 65}
   m_Pivot: {x: 3.04, y: 4.36}
 --- !u!114 &751883805
 MonoBehaviour:
@@ -946,6 +946,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1417030399}
+  - component: {fileID: 1417030400}
   m_Layer: 5
   m_Name: Sistem Pergantian Hari & Hutang
   m_TagString: Untagged
@@ -975,6 +976,21 @@ RectTransform:
   m_AnchoredPosition: {x: 716.8986, y: 374.35803}
   m_SizeDelta: {x: 796.738, y: 484.721}
   m_Pivot: {x: 0.89, y: 0.76}
+--- !u!114 &1417030400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417030398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eaa935518bdcdd40b73275b67aa2aad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayText: {fileID: 751883805}
+  debtText: {fileID: 284398384}
+  timeText: {fileID: 561492072}
 --- !u!1 &1704328735
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,7 +1130,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 690.2815, y: 154.91615}
-  m_SizeDelta: {x: 128.698, y: 33.401}
+  m_SizeDelta: {x: 128.698, y: 35}
   m_Pivot: {x: 1.66, y: -0.29}
 --- !u!114 &1712059277
 MonoBehaviour:
