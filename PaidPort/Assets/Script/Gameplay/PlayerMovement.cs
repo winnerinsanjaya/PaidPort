@@ -9,13 +9,15 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private Rigidbody2D rb;
-    Vector2 movement;
-    
 
-    // Update is called once per frame
+    Vector2 movement;
+
     void Update()
     {
+        //Memanggil fungsi Movement
         Movement();
+
+       
     }
     private void FixedUpdate()
     {
@@ -23,11 +25,13 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Movement()
     {
+        //Memangil fungsi input gerakan Horizontal & Vertical di keyboard
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
         float x = Input.GetAxis("Horizontal");
         Vector2 direction = new Vector2 (x, 0);
 
+        //Mendeklarasi untuk membalik player
         if (x < 0)
         {
             Facing(false);
@@ -40,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Facing(bool isFacingRight)
     {
+        //Fungsi untuk membalik player
         if (isFacingRight == true)
         {
             transform.localScale = new Vector3(1, 1, 1);
@@ -52,4 +57,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+    
+    
 }
