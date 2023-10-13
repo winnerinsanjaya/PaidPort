@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Rigidbody2D rb;
 
+    [SerializeField]
+    private float gravity = 30f;
+
     Vector2 movement;
 
     void Update()
@@ -22,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        ApplyGravity();
     }
     private void Movement()
     {
@@ -56,6 +60,12 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
+    }
+    private void ApplyGravity()
+    {
+        //Fungsi Gravitasi
+        Vector2 gravityVector = Vector2.down * gravity;
+        rb.AddForce(gravityVector);
     }
     
     
