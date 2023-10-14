@@ -6,26 +6,35 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private float moveSpeed = 5f;
-
     [SerializeField]
     private Rigidbody2D rb;
-
     [SerializeField]
-    private float gravity = 30f;
+    private float fallSpeed = 10f;
+    [SerializeField]
+    private float gravityDown = 20f;
+    [SerializeField]
+    private float gravityUp = 5f;
 
     Vector2 movement;
 
+    void Start()
+    {
+        ////Set gravitasi dari awal langsung ada
+        rb.gravityScale = gravityDown;
+    }
     void Update()
     {
         //Memanggil fungsi Movement
         Movement();
-
-       
+        //Memanggil fungsi HanldeGravity
+        HandleGravity();
+        //Memanggil fungsi HandleMovement
+        HandleMovement();
     }
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-        ApplyGravity();
+        
     }
     private void Movement()
     {
@@ -61,11 +70,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
-    private void ApplyGravity()
+    void HandleGravity()
     {
-        //Fungsi Gravitasi
-        Vector2 gravityVector = Vector2.down * gravity;
-        rb.AddForce(gravityVector);
+        float currentGravity = movement.y > 0 ? gravityUp : gravityDown;
+        rb.gravityScale = currentGravity;
+    }
+   void HandleMovement()
+    {
+        rb.velocity = new Vector2(movement.x * fallSpeed, rb.velocity.y);
     }
     
     
