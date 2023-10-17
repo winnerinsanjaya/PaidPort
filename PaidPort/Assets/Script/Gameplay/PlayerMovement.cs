@@ -15,12 +15,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float gravityUp = 5f;
 
+   
     Vector2 movement;
 
     void Start()
     {
         ////Set gravitasi dari awal langsung ada
         rb.gravityScale = gravityDown;
+        
     }
     void Update()
     {
@@ -30,11 +32,12 @@ public class PlayerMovement : MonoBehaviour
         HandleGravity();
         //Memanggil fungsi HandleMovement
         HandleMovement();
+        
     }
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-        
+
     }
     private void Movement()
     {
@@ -42,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
         float x = Input.GetAxis("Horizontal");
-        Vector2 direction = new Vector2 (x, 0);
+        Vector2 direction = new Vector2(x, 0);
 
         //Mendeklarasi untuk membalik player
         if (x < 0)
@@ -75,10 +78,14 @@ public class PlayerMovement : MonoBehaviour
         float currentGravity = movement.y > 0 ? gravityUp : gravityDown;
         rb.gravityScale = currentGravity;
     }
-   void HandleMovement()
+    void HandleMovement()
     {
         rb.velocity = new Vector2(movement.x * fallSpeed, rb.velocity.y);
     }
-    
-    
+
 }
+
+
+
+
+
