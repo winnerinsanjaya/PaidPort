@@ -25,6 +25,7 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Memanggil fungsi FollowTarget
         FollowTarget();
     }
     private void FollowTarget()

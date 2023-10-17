@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         HandleGravity();
         //Memanggil fungsi HandleMovement
         HandleMovement();
+        //Memanggil fungsi DestroyGround
         DestroyGround();
         
     }
@@ -140,11 +141,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (groundHealth != null && Time.time - lastDamageTime >= 1f)
         {
-            // Hancurkan ground dengan jumlah damage yang ditentukan
+            // Hancurkan ground dengan jumlah damage yang telah ditentukan
             groundHealth.TakeDamage(damagePerHit);
             lastDamageTime = Time.time;
 
-            // Menarik pemain ke tengah ground/objek yang diberi damage
+            // Menarik pemain ke tengah ground yang diberi damage
             pullTarget = groundCollider.transform;
         }
     }

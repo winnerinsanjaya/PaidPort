@@ -11,17 +11,17 @@ public class DayNightCycle : MonoBehaviour
     private TextMeshProUGUI debtText;
     [SerializeField]
     private TextMeshProUGUI timeText;
-    private int currentHour = 0; // Jam saat ini (0-23)
-    private int currentMinute = 0; // Menit saat ini (0-59)
-    private int currentDay = 1; // Hari saat ini
+    private int currentHour = 0; 
+    private int currentMinute = 0; 
+    private int currentDay = 1;
     private string[] dayNames; // Array yang berisi nama hari
     private string[] dailyDebts; // Array yang berisi hutang harian 
     private float updateInterval = 1.0f; // Interval waktu untuk pembaruan jam (setiap detik)
-    private float timeSinceLastUpdate = 0f; // Waktu sejak pembaruan jam terakhir
+    private float timeSinceLastUpdate = 0f; 
 
     void Start()
     {
-        // Inisialisasi array nama hari dan array hutang harian sesuai dengan kebutuhan Anda
+        
         dayNames = new string[]
         {
             "Senin",
@@ -80,7 +80,7 @@ public class DayNightCycle : MonoBehaviour
                     currentDay = 1;
                 }
 
-                // Panggil metode untuk mengatur perubahan hari
+                // Memanggil fungsi untuk mengatur perubahan hari
                 HandleDayChange(currentDay);
             }
         }
@@ -100,7 +100,7 @@ public class DayNightCycle : MonoBehaviour
 
     void UpdateDayAndDebtText()
     {
-        // Update teks objek TextMeshPro dengan nama hari dan hutang harian saat ini
+        
         dayText.text = "Hari: " + dayNames[currentDay - 1];
         debtText.text = "Hutang: " + dailyDebts[currentDay - 1] + "Gc";
     }

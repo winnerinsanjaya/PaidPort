@@ -14,13 +14,13 @@ public class GroundHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        // Kurangi kesehatan tanah berdasarkan jumlah kerusakan yang diberikan
+        // Kurangi hp ground berdasarkan jumlah kerusakan yang diberikan
         currentHealth -= damage;
 
-        // Cek jika kesehatan tanah sudah habis
+        // Cek jika hp ground sudah habis
         if (currentHealth <= 0)
         {
-            // Hancurkan tanah atau lakukan tindakan lain sesuai kebutuhan Anda
+            // Hancurkan ground
             Destroy(gameObject);
         }
     }
