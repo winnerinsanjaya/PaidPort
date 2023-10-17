@@ -15,7 +15,19 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float gravityUp = 5f;
 
-   
+    [SerializeField]
+    private Collider2D playerCollider;
+    [SerializeField]
+    private float damagePerHit = 10f;
+    [SerializeField]
+    private float pullSpeed = 2.0f;
+    private float lastDamageTime = 0f;
+    private Transform pullTarget = null;
+
+    private Transform playerTransform;
+    [SerializeField]
+    private LayerMask groundLayer;
+
     Vector2 movement;
 
     void Start()
@@ -32,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         HandleGravity();
         //Memanggil fungsi HandleMovement
         HandleMovement();
+        DestroyGround();
         
     }
     private void FixedUpdate()
@@ -82,8 +95,73 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = new Vector2(movement.x * fallSpeed, rb.velocity.y);
     }
+    void DestroyGround()
+    {
+        // Periksa jika ada tanah di depan pemain
+        Vector2 playerPosition = playerCollider.bounds.center;
 
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            // Periksa jika ada tanah di bawah pemain
+            RaycastHit2D hit = Physics2D.Raycast(playerPosition, Vector2.down, playerCollider.bounds.extents.y * 2, groundLayer);
+
+            if (hit.collider != null)
+            {
+                DamageGround(hit.collider);
+            }
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            MoveAndDamage(Vector2.right);
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            MoveAndDamage(Vector2.left);
+        }
+
+        // Tarik pemain ke titik tengah ground/objek yang diberi damage
+        if (pullTarget != null)
+        {
+            Vector3 targetPosition = pullTarget.position;
+            playerCollider.transform.position = Vector3.MoveTowards(playerCollider.transform.position, targetPosition, pullSpeed * Time.deltaTime);
+
+            // Hentikan ketarikan jika pemain sudah berada di tengah ground/objek
+            if (playerCollider.bounds.Intersects(pullTarget.GetComponent<Collider2D>().bounds))
+            {
+                pullTarget = null;
+            }
+        }
+    }
+
+    void DamageGround(Collider2D groundCollider)
+    {
+        // Memeriksa apakah objek yang dihancurkan memiliki komponen "GroundHealth" (atau sesuaikan dengan nama komponen yang sesuai)
+        GroundHealth groundHealth = groundCollider.GetComponent<GroundHealth>();
+
+        if (groundHealth != null && Time.time - lastDamageTime >= 1f)
+        {
+            // Hancurkan tanah dengan jumlah damage yang ditentukan
+            groundHealth.TakeDamage(damagePerHit);
+            lastDamageTime = Time.time;
+
+            // Atur target tarik pemain ke tengah ground/objek yang diberi damage
+            pullTarget = groundCollider.transform;
+        }
+    }
+
+    void MoveAndDamage(Vector2 direction)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(playerCollider.bounds.center, direction, playerCollider.bounds.extents.x + 0.1f, groundLayer);
+
+        if (hit.collider != null && Time.time - lastDamageTime >= 1f)
+        {
+            DamageGround(hit.collider);
+        }
+    }
 }
+    
+
+
 
 
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GroundHealth : MonoBehaviour
 {
-    public float maxHealth = 100f;
+    public float maxHealth = 20f;
     private float currentHealth;
 
     private void Start()
