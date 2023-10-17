@@ -119,13 +119,13 @@ public class PlayerMovement : MonoBehaviour
             MoveAndDamage(Vector2.left);
         }
 
-        // Tarik pemain ke titik tengah ground/objek yang diberi damage
+        
         if (pullTarget != null)
         {
             Vector3 targetPosition = pullTarget.position;
             playerCollider.transform.position = Vector3.MoveTowards(playerCollider.transform.position, targetPosition, pullSpeed * Time.deltaTime);
 
-            // Hentikan ketarikan jika pemain sudah berada di tengah ground/objek
+            // Menghentikan menarik apabila sudah ada di tengah ground
             if (playerCollider.bounds.Intersects(pullTarget.GetComponent<Collider2D>().bounds))
             {
                 pullTarget = null;
@@ -135,16 +135,16 @@ public class PlayerMovement : MonoBehaviour
 
     void DamageGround(Collider2D groundCollider)
     {
-        // Memeriksa apakah objek yang dihancurkan memiliki komponen "GroundHealth" (atau sesuaikan dengan nama komponen yang sesuai)
+        // Memeriksa apakah objek yang dihancurkan memiliki komponen "GroundHealth" 
         GroundHealth groundHealth = groundCollider.GetComponent<GroundHealth>();
 
         if (groundHealth != null && Time.time - lastDamageTime >= 1f)
         {
-            // Hancurkan tanah dengan jumlah damage yang ditentukan
+            // Hancurkan ground dengan jumlah damage yang ditentukan
             groundHealth.TakeDamage(damagePerHit);
             lastDamageTime = Time.time;
 
-            // Atur target tarik pemain ke tengah ground/objek yang diberi damage
+            // Menarik pemain ke tengah ground/objek yang diberi damage
             pullTarget = groundCollider.transform;
         }
     }
