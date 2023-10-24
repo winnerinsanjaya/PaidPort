@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private Transform playerTransform;
     [SerializeField]
     private LayerMask groundLayer;
-    private bool isPlayerGrounded = false;
+   
 
 
     Vector2 movement;
@@ -102,8 +102,9 @@ public class PlayerMovement : MonoBehaviour
     {
         // Periksa jika ada tanah di depan pemain
         Vector2 playerPosition = playerCollider.bounds.center;
+        bool isGrounded = IsGrounded();
 
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow)&&isGrounded)
         {
             // Periksa jika ada tanah di bawah pemain
             RaycastHit2D hit = Physics2D.Raycast(playerPosition, Vector2.down, playerCollider.bounds.extents.y * 2, groundLayer);
@@ -115,11 +116,11 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            MoveAndDamage(Vector2.right);
+            MoveAndDamage(Vector2.right, isGrounded);
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            MoveAndDamage(Vector2.left);
+            MoveAndDamage(Vector2.left, isGrounded);
         }
 
         
@@ -152,16 +153,28 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void MoveAndDamage(Vector2 direction)
+    void MoveAndDamage(Vector2 direction, bool IsGrounded)
     {
-        RaycastHit2D hit = Physics2D.Raycast(playerCollider.bounds.center, direction, playerCollider.bounds.extents.x + 0.1f, groundLayer);
+       
 
-        if (hit.collider != null && Time.time - lastDamageTime >= 1f)
+        if (IsGrounded && Time.time - lastDamageTime >= 1f)
         {
+            RaycastHit2D hit = Physics2D.Raycast(playerCollider.bounds.center, direction, playerCollider.bounds.extents.x + 0.1f, groundLayer);
+
+            if (hit.collider != null)
+            {
             DamageGround(hit.collider);
         }
     }
-   
+
+    }
+    bool IsGrounded()
+    {
+        // Pemeriksaan apakah pemain menapak di atas ground
+        RaycastHit2D hit = Physics2D.Raycast(playerCollider.bounds.center, Vector2.down, playerCollider.bounds.extents.y + 0.1f, groundLayer);
+        return hit.collider != null;
+    }
+
 }
     
 
