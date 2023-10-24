@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     private Transform playerTransform;
     [SerializeField]
     private LayerMask groundLayer;
+    private bool isPlayerGrounded = false;
+
 
     Vector2 movement;
 
@@ -46,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         HandleMovement();
         //Memanggil fungsi DestroyGround
         DestroyGround();
-        
+    
     }
     private void FixedUpdate()
     {
@@ -159,6 +161,7 @@ public class PlayerMovement : MonoBehaviour
             DamageGround(hit.collider);
         }
     }
+   
 }
     
 
