@@ -4766,7 +4766,7 @@ MonoBehaviour:
   silverChance: 0.03
   goldChance: 0.02
   diamondChance: 0.02
-  maxDepth: 3000
+  maxDepth: 500
 --- !u!4 &1167379547 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9208428455543089768, guid: eca673a6357ccf448babc9ab24f57c01, type: 3}
@@ -5364,7 +5364,7 @@ MonoBehaviour:
   gravityUp: 5
   playerCollider: {fileID: 1286349567}
   damagePerHit: 10
-  pullSpeed: 2
+  lastDamageTime: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 64

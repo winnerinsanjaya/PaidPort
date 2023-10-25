@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -20,9 +21,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float damagePerHit = 10f;
     [SerializeField]
-    private float pullSpeed = 2.0f;
     private float lastDamageTime = 0f;
-    private Transform pullTarget = null;
+    
+
 
     private Transform playerTransform;
     [SerializeField]
@@ -122,19 +123,6 @@ public class PlayerMovement : MonoBehaviour
         {
             MoveAndDamage(Vector2.left, isGrounded);
         }
-
-        
-        if (pullTarget != null)
-        {
-            Vector3 targetPosition = pullTarget.position;
-            playerCollider.transform.position = Vector3.MoveTowards(playerCollider.transform.position, targetPosition, pullSpeed * Time.deltaTime);
-
-            // Menghentikan menarik apabila sudah ada di tengah ground
-            if (playerCollider.bounds.Intersects(pullTarget.GetComponent<Collider2D>().bounds))
-            {
-                pullTarget = null;
-            }
-        }
     }
 
     void DamageGround(Collider2D groundCollider)
@@ -147,9 +135,6 @@ public class PlayerMovement : MonoBehaviour
             // Hancurkan ground dengan jumlah damage yang telah ditentukan
             groundHealth.TakeDamage(damagePerHit);
             lastDamageTime = Time.time;
-
-            // Menarik pemain ke tengah ground yang diberi damage
-            pullTarget = groundCollider.transform;
         }
     }
 
@@ -164,7 +149,7 @@ public class PlayerMovement : MonoBehaviour
             if (hit.collider != null)
             {
             DamageGround(hit.collider);
-        }
+            }
     }
 
     }

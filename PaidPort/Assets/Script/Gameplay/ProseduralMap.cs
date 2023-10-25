@@ -64,7 +64,7 @@ public class ProseduralMap : MonoBehaviour
                 {
                     Instantiate(groundPrefab, spawnPos, Quaternion.identity);
                 }
-                else if (currentLayerDepth >= -500)
+                else if (currentLayerDepth >= -150)
                 {
                     if (randomValue <= bronzeChance)
                     {
@@ -75,7 +75,7 @@ public class ProseduralMap : MonoBehaviour
                         Instantiate(groundPrefab, spawnPos, Quaternion.identity);
                     }
                 }
-                else if (currentLayerDepth >= -1000)
+                else if (currentLayerDepth >= -300)
                 {
                     if (randomValue <= silverChance)
                     {
@@ -86,7 +86,7 @@ public class ProseduralMap : MonoBehaviour
                         Instantiate(groundPrefab, spawnPos, Quaternion.identity);
                     }
                 }
-                else if (currentLayerDepth >= -2000)
+                else if (currentLayerDepth >= -400)
                 {
                     if (randomValue <= goldChance)
                     {
@@ -125,7 +125,7 @@ public class ProseduralMap : MonoBehaviour
             {
                 Instantiate(groundPrefab, spawnPos, Quaternion.identity);
             }
-            else if (currentLayerDepth >= -500)
+            else if (currentLayerDepth >= -150)
             {
                 if (randomValue <= bronzeChance)
                 {
@@ -136,7 +136,7 @@ public class ProseduralMap : MonoBehaviour
                     Instantiate(groundPrefab, spawnPos, Quaternion.identity);
                 }
             }
-            else if (currentLayerDepth >= -1000)
+            else if (currentLayerDepth >= -300)
             {
                 if (randomValue <= silverChance)
                 {
@@ -147,7 +147,7 @@ public class ProseduralMap : MonoBehaviour
                     Instantiate(groundPrefab, spawnPos, Quaternion.identity);
                 }
             }
-            else if (currentLayerDepth >= -2000)
+            else if (currentLayerDepth >= -400)
             {
                 if (randomValue <= goldChance)
                 {
