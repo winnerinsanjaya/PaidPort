@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using UnityEngine;
 
 public class GroundHealth : MonoBehaviour
 {
     public float maxHealth = 20f;
-    public float healDelay = 1.5f;
+    [SerializeField]
+    private float healDelay = 1.5f;
     private float currentHealth;
     private float lastDamageTime;
 

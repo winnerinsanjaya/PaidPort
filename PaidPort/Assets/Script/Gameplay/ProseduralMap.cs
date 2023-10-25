@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ProseduralMap : MonoBehaviour
 {
-
     public Transform groundPrefab;
 
     public Transform bronzePrefab;
@@ -50,7 +49,7 @@ public class ProseduralMap : MonoBehaviour
         }
     }
 
-    void GenerateInitialGround()
+  void GenerateInitialGround()
     {
         for (int i = 0; i < groundWidth; i++)
         {
@@ -63,50 +62,6 @@ public class ProseduralMap : MonoBehaviour
                 if (currentLayerDepth >= -2)
                 {
                     Instantiate(groundPrefab, spawnPos, Quaternion.identity);
-                }
-                else if (currentLayerDepth >= -150)
-                {
-                    if (randomValue <= bronzeChance)
-                    {
-                        Instantiate(bronzePrefab, spawnPos, Quaternion.identity);
-                    }
-                    else
-                    {
-                        Instantiate(groundPrefab, spawnPos, Quaternion.identity);
-                    }
-                }
-                else if (currentLayerDepth >= -300)
-                {
-                    if (randomValue <= silverChance)
-                    {
-                        Instantiate(silverPrefab, spawnPos, Quaternion.identity);
-                    }
-                    else
-                    {
-                        Instantiate(groundPrefab, spawnPos, Quaternion.identity);
-                    }
-                }
-                else if (currentLayerDepth >= -400)
-                {
-                    if (randomValue <= goldChance)
-                    {
-                        Instantiate(goldPrefab, spawnPos, Quaternion.identity);
-                    }
-                    else
-                    {
-                        Instantiate(groundPrefab, spawnPos, Quaternion.identity);
-                    }
-                }
-                else
-                {
-                    if (randomValue <= diamondChance)
-                    {
-                        Instantiate(diamondPrefab, spawnPos, Quaternion.identity);
-                    }
-                    else
-                    {
-                        Instantiate(groundPrefab, spawnPos, Quaternion.identity);
-                    }
                 }
             }
         }
@@ -140,22 +95,32 @@ public class ProseduralMap : MonoBehaviour
             {
                 if (randomValue <= silverChance)
                 {
-                    Instantiate(silverPrefab, spawnPos, Quaternion.identity);
+                     Instantiate(silverPrefab, spawnPos, Quaternion.identity);
                 }
                 else
                 {
-                    Instantiate(groundPrefab, spawnPos, Quaternion.identity);
+                    Transform ground = Instantiate(groundPrefab, spawnPos, Quaternion.identity);
+                    GroundHealth groundHealth = ground.GetComponent<GroundHealth>();
+                    if (groundHealth != null)
+                    {
+                        groundHealth.maxHealth = 40;
+                    }
                 }
             }
             else if (currentLayerDepth >= -400)
             {
                 if (randomValue <= goldChance)
                 {
-                    Instantiate(goldPrefab, spawnPos, Quaternion.identity);
+                  Instantiate(goldPrefab, spawnPos, Quaternion.identity);  
                 }
                 else
                 {
-                    Instantiate(groundPrefab, spawnPos, Quaternion.identity);
+                    Transform ground = Instantiate(groundPrefab, spawnPos, Quaternion.identity);
+                    GroundHealth groundHealth = ground.GetComponent<GroundHealth>();
+                    if (groundHealth != null)
+                    {
+                        groundHealth.maxHealth = 60;
+                    }
                 }
             }
             else
@@ -164,9 +129,15 @@ public class ProseduralMap : MonoBehaviour
                 {
                     Instantiate(diamondPrefab, spawnPos, Quaternion.identity);
                 }
+
                 else
                 {
-                    Instantiate(groundPrefab, spawnPos, Quaternion.identity);
+                    Transform ground = Instantiate(groundPrefab, spawnPos, Quaternion.identity);
+                    GroundHealth groundHealth = ground.GetComponent<GroundHealth>();
+                    if (groundHealth != null)
+                    {
+                        groundHealth.maxHealth = 80;
+                    }
                 }
             }
         }
