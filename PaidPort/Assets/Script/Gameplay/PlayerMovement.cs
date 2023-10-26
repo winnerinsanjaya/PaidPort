@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -22,7 +25,8 @@ public class PlayerMovement : MonoBehaviour
     private float damagePerHit = 10f;
     [SerializeField]
     private float lastDamageTime = 0f;
-    
+    private Vector2 moveDirection;
+
 
 
     private Transform playerTransform;
@@ -54,7 +58,6 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-
     }
     private void Movement()
     {
@@ -63,6 +66,13 @@ public class PlayerMovement : MonoBehaviour
         movement.y = Input.GetAxis("Vertical");
         float x = Input.GetAxis("Horizontal");
         Vector2 direction = new Vector2(x, 0);
+
+        if (moveDirection.magnitude == 0)
+        {
+            // Anda dapat mengatur nilai default di sini jika Anda ingin pemain berhenti sepenuhnya
+            // moveDirection = Vector2.zero;
+            // Atau Anda dapat mempertahankan arah pergerakan sebelumnya
+        }
 
         //Mendeklarasi untuk membalik player
         if (x < 0)
@@ -105,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
         Vector2 playerPosition = playerCollider.bounds.center;
         bool isGrounded = IsGrounded();
 
-        if (Input.GetKey(KeyCode.DownArrow)&&isGrounded)
+        if (Input.GetKey(KeyCode.DownArrow) && isGrounded)
         {
             // Periksa jika ada tanah di bawah pemain
             RaycastHit2D hit = Physics2D.Raycast(playerPosition, Vector2.down, playerCollider.bounds.extents.y * 2, groundLayer);
@@ -123,6 +133,8 @@ public class PlayerMovement : MonoBehaviour
         {
             MoveAndDamage(Vector2.left, isGrounded);
         }
+       
+      
     }
 
     void DamageGround(Collider2D groundCollider)
@@ -140,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveAndDamage(Vector2 direction, bool IsGrounded)
     {
-       
+
 
         if (IsGrounded && Time.time - lastDamageTime >= 1f)
         {
@@ -148,9 +160,15 @@ public class PlayerMovement : MonoBehaviour
 
             if (hit.collider != null)
             {
-            DamageGround(hit.collider);
+                DamageGround(hit.collider);
             }
-    }
+
+            else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))
+            {
+                lastDamageTime = Time.time;
+            }
+            playerCollider.transform.Translate(movement * Time.deltaTime);
+        }
 
     }
     bool IsGrounded()
