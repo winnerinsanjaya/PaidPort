@@ -16,7 +16,7 @@ public class DayNightCycle : MonoBehaviour
     private int currentDay = 1;
     private string[] dayNames; // Array yang berisi nama hari
     private string[] dailyDebts; // Array yang berisi hutang harian 
-    private float updateInterval = 1.0f; // Interval waktu untuk pembaruan jam (setiap detik)
+    private float updateInterval = 0.1f; // Interval waktu untuk pembaruan jam (setiap detik)
     private float timeSinceLastUpdate = 0f; 
 
     void Start()
