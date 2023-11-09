@@ -11,6 +11,9 @@ public class FuelStation : MonoBehaviour
     private GameObject GameScreen;
 
     private bool inArea;
+    int itemCost = 50;
+
+
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -18,7 +21,7 @@ public class FuelStation : MonoBehaviour
         if (collision.tag == "Player")
         {
             FuelCanvas.SetActive(true);
-           inArea = true;
+            inArea = true;
         }
     }
 
@@ -32,7 +35,7 @@ public class FuelStation : MonoBehaviour
     }
     private void Update()
     {
-        if (inArea) 
+        if (inArea)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -51,6 +54,18 @@ public class FuelStation : MonoBehaviour
 
     public void Button()
     {
-        Debug.Log("Fuel Bertambah"); 
+        if (GameManager.Instance.GetPlayerMoney() >= itemCost)
+        {
+            // Jika pemain memiliki cukup uang, kurangi uang pemain sesuai dengan harga item.
+            GameManager.Instance.SubtractMoney(itemCost);
+            Debug.Log("Fuel bertambah");
+           
+        }
+        else
+        {
+            
+            Debug.Log("Uang tidak cukup");
+        }
     }
 }
+
