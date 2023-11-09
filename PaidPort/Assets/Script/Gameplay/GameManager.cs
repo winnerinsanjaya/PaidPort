@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+
         }
         UpdateMoneyText();
     }
@@ -52,18 +53,21 @@ public class GameManager : MonoBehaviour
 
 
     }
-    public void SaveMoney()
+    public void SaveMoney(int amount)
     {
-        PlayerPrefs.SetInt("PlayerMoney", money);
+        PlayerPrefs.SetInt("money", amount);
         PlayerPrefs.Save();
         Debug.Log("Uang pemain telah disimpan.");
+        
     }
-    public void LoadMoney()
+    public void LoadMoney(int amount)
     {
-        if (PlayerPrefs.HasKey("PlayerMoney"))
+        if (PlayerPrefs.HasKey("money"))
         {
-            money = PlayerPrefs.GetInt("PlayerMoney");
-            Debug.Log("Uang pemain telah dimuat: " + money + " uang.");
+            amount = PlayerPrefs.GetInt("money");
+            Debug.Log("Uang pemain telah dimuat: " + amount + " uang.");
+            UpdateMoneyText();
+
         }
     }
     public void UpdateMoneyText()
