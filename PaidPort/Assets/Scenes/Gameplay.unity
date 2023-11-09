@@ -4467,7 +4467,6 @@ GameObject:
   - component: {fileID: 944604159}
   - component: {fileID: 944604162}
   - component: {fileID: 944604161}
-  - component: {fileID: 944604160}
   m_Layer: 5
   m_Name: Uang
   m_TagString: Untagged
@@ -4494,19 +4493,6 @@ RectTransform:
   m_AnchoredPosition: {x: -675, y: 354}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &944604160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 944604158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83eec731a401a394cb3500afab8f508b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moneyText: {fileID: 944604161}
 --- !u!114 &944604161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8794,7 +8780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bc9dab46fe6cda41b3cf61120ffc959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMoney: 500
+  MoneyText: {fileID: 944604161}
 --- !u!4 &1942042536
 Transform:
   m_ObjectHideFlags: 0

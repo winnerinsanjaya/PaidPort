@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public int playerMoney = 500;
+    public static GameManager instance;
+    public Text MoneyText;
+    private int money = 100;
 
-    
-    private static GameManager instance;
     public static GameManager Instance
     {
         get
@@ -24,56 +25,55 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-
-    private void Awake()
+    private void Start()
     {
-        
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
         }
-
+        UpdateMoneyText();
     }
 
-    // Fungsi untuk menambahkan uang ke pemain.
     public void AddMoney(int amount)
     {
-        playerMoney += amount;
-        Debug.Log("Pemain memiliki sekarang: " + playerMoney + " uang.");
-    }
+        money += amount;
+        UpdateMoneyText();
 
-    // Fungsi untuk menyimpan uang pemain (misalnya saat bermain ulang level).
+        Debug.Log("Pemain memiliki sekarang: " + money + " uang.");
+
+    }
+    public void SubtractMoney(int amount)
+    {
+        money -= amount;
+
+        UpdateMoneyText();
+
+        Debug.Log("Pemain memiliki sekarang: " + money + " uang.");
+
+
+    }
     public void SaveMoney()
     {
-        PlayerPrefs.SetInt("PlayerMoney", playerMoney);
+        PlayerPrefs.SetInt("PlayerMoney", money);
         PlayerPrefs.Save();
         Debug.Log("Uang pemain telah disimpan.");
     }
-
-    // Fungsi untuk load uang pemain saat permainan dimulai.
     public void LoadMoney()
     {
         if (PlayerPrefs.HasKey("PlayerMoney"))
         {
-            playerMoney = PlayerPrefs.GetInt("PlayerMoney");
-            Debug.Log("Uang pemain telah dimuat: " + playerMoney + " uang.");
+            money = PlayerPrefs.GetInt("PlayerMoney");
+            Debug.Log("Uang pemain telah dimuat: " + money + " uang.");
         }
     }
-   
-    public void SubtractMoney(int amount)
+    public void UpdateMoneyText()
     {
-        playerMoney -= amount;
-        Debug.Log("Pemain memiliki sekarang: " + playerMoney + " uang.");
-    }
-    public void UpdateMoney(int newAmount)
-    {
-        playerMoney = newAmount;
-        Debug.Log("Jumlah uang pemain diperbarui: " + playerMoney + " uang.");
+        MoneyText.text = money + "Gc";
     }
     public int GetPlayerMoney()
     {
-        return playerMoney;
+        return money;
     }
 }
+
 
