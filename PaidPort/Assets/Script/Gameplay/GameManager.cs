@@ -32,12 +32,14 @@ public class GameManager : MonoBehaviour
             instance = this;
 
         }
+        LoadMoney();
         UpdateMoneyText();
     }
 
     public void AddMoney(int amount)
     {
         money += amount;
+        SaveMoney(money);
         UpdateMoneyText();
 
         Debug.Log("Pemain memiliki sekarang: " + money + " uang.");
@@ -46,7 +48,7 @@ public class GameManager : MonoBehaviour
     public void SubtractMoney(int amount)
     {
         money -= amount;
-
+        SaveMoney(money);
         UpdateMoneyText();
 
         Debug.Log("Pemain memiliki sekarang: " + money + " uang.");
@@ -56,18 +58,15 @@ public class GameManager : MonoBehaviour
     public void SaveMoney(int amount)
     {
         PlayerPrefs.SetInt("money", amount);
-        PlayerPrefs.Save();
-        Debug.Log("Uang pemain telah disimpan.");
-        
     }
-    public void LoadMoney(int amount)
+    public void LoadMoney()
     {
         if (PlayerPrefs.HasKey("money"))
         {
-            amount = PlayerPrefs.GetInt("money");
-            Debug.Log("Uang pemain telah dimuat: " + amount + " uang.");
-            UpdateMoneyText();
 
+            int amount = PlayerPrefs.GetInt("money");
+            money = amount;
+            UpdateMoneyText();
         }
     }
     public void UpdateMoneyText()
