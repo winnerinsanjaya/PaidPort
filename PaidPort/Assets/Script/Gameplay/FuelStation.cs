@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class FuelStation : MonoBehaviour
 {
-    public GameObject FuelCanvas;
-
-    public GameObject FuelScreen;
+    [SerializeField]
+    private GameObject FuelCanvas;
+    [SerializeField]
+    private GameObject FuelScreen;
     [SerializeField]
     private GameObject GameScreen;
 

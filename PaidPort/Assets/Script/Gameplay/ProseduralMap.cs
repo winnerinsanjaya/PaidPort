@@ -36,13 +36,13 @@ public class ProseduralMap : MonoBehaviour
 
     void Start()
     {
-        // Membuat lantai awal
+        
         GenerateInitialGround();
     }
 
     void Update()
     {
-        // Cek jika kita perlu membuat lebih banyak lantai ke bawah
+        
         if (Camera.main.transform.position.y > spawnPosition.y - (groundHeight * groundCollider.localScale.y) && currentDepth < maxDepth)
         {
             GenerateGround();

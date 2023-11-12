@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public Text MoneyText;
+    [SerializeField]
+    private Text MoneyText;
     private int money = 100;
 
     public static GameManager Instance

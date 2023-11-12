@@ -14,9 +14,9 @@ public class DayNightCycle : MonoBehaviour
     private int currentHour = 0; 
     private int currentMinute = 0; 
     private int currentDay = 1;
-    private string[] dayNames; // Array yang berisi nama hari
-    private string[] dailyDebts; // Array yang berisi hutang harian 
-    private float updateInterval = 0.1f; // Interval waktu untuk pembaruan jam (setiap detik)
+    private string[] dayNames; 
+    private string[] dailyDebts; 
+    private float updateInterval = 0.1f; 
     private float timeSinceLastUpdate = 0f; 
 
     void Start()
@@ -35,33 +35,33 @@ public class DayNightCycle : MonoBehaviour
 
         dailyDebts = new string[]
         {
-            "500",  // Hari 1
-            "750",  // Hari 2
-            "1000",  // Hari 3
-            "1300",  // Hari 4
-            "1600",  // Hari 5
-            "1850",  // Hari 6
-            "2500"   // Hari 7
+            "500", 
+            "750", 
+            "1000",  
+            "1300", 
+            "1600",  
+            "1850", 
+            "2500"   
         };
 
-        UpdateDayAndDebtText(); // Memperbarui teks hari dan hutang pada UI
+        UpdateDayAndDebtText(); 
     }
 
     void Update()
     {
-        // Update waktu saat ini
+        
         timeSinceLastUpdate += Time.deltaTime;
 
         if (timeSinceLastUpdate >= updateInterval)
         {
-            UpdateTime(); // Pembaruan jam
-            timeSinceLastUpdate = 0f; // Reset waktu terakhir pembaruan
+            UpdateTime();
+            timeSinceLastUpdate = 0f; 
         }
     }
 
     void UpdateTime()
     {
-        // Update jam dan menit saat ini
+        
         currentMinute++;
 
         if (currentMinute >= 60)
@@ -74,18 +74,18 @@ public class DayNightCycle : MonoBehaviour
                 currentHour = 0;
                 currentDay++;
 
-                // Jika sudah mencapai hari ke-8, kembali ke hari ke-1
+                
                 if (currentDay > 7)
                 {
                     currentDay = 1;
                 }
 
-                // Memanggil fungsi untuk mengatur perubahan hari
+                
                 HandleDayChange(currentDay);
             }
         }
 
-        // Memperbarui teks waktu pada UI
+        
         timeText.text = currentHour.ToString("00") + ":" + currentMinute.ToString("00");
     }
 
@@ -94,7 +94,7 @@ public class DayNightCycle : MonoBehaviour
 
         Debug.Log("Hari berubah menjadi: " + dayNames[day - 1]);
 
-        // Memperbarui teks hari dan hutang pada UI
+      
         UpdateDayAndDebtText();
     }
 
