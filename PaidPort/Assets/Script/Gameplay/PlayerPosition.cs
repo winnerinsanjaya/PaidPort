@@ -8,8 +8,8 @@ public class PlayerPosition : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI positionText;
-    [SerializeField]
-    private Transform playerTransform; 
+   
+    public Transform playerTransform; 
 
     private float lastYPosition;
 
