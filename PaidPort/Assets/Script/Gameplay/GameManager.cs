@@ -33,6 +33,10 @@ public class GameManager : MonoBehaviour
             instance = this;
 
         }
+        else
+        {
+            Destroy(gameObject);
+        }
         LoadMoney();
         UpdateMoneyText();
     }

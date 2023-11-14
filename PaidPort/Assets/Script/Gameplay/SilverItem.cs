@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
-public class BronzeItem : MonoBehaviour
+public class SilverItem : MonoBehaviour
 {
-    public int bronzeCount = 1;
+    public int silverCount = 1; 
 
     private void OnDestroy()
     {
@@ -12,14 +13,14 @@ public class BronzeItem : MonoBehaviour
 
         if (playerCollider != null && playerCollider.CompareTag("Player"))
         {
-           
-            InventoryManager.Instance.AddBronze(bronzeCount);
+            
+            InventoryManager.Instance.AddSilver(silverCount);
         }
     }
 
     private Collider2D GetPlayerCollider()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f); 
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
 
         foreach (Collider2D collider in colliders)
         {

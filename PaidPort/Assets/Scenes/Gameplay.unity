@@ -1010,6 +1010,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryCanvas: {fileID: 558188853}
   bronzeCountText: {fileID: 960070158}
+  silverCountText: {fileID: 1097500546}
+  goldCountText: {fileID: 1124951474}
+  diamondCountText: {fileID: 1391394696}
 --- !u!4 &235558658
 Transform:
   m_ObjectHideFlags: 0
@@ -2622,7 +2625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1286349565}
   offset: 0
-  dynamicOffset: {x: 0, y: -1}
+  dynamicOffset: {x: 0, y: 0.5}
   smoothSpeed: 0.2
 --- !u!1001 &532136565
 PrefabInstance:
@@ -7019,7 +7022,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.18084824, y: 0.045198113}
+  m_Offset: {x: -0.18405741, y: 0.045198113}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -7030,7 +7033,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.756886, y: 0.79714054}
+  m_Size: {x: 0.75046766, y: 0.79714054}
   m_EdgeRadius: 0
 --- !u!212 &1286349564
 SpriteRenderer:

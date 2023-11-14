@@ -45,19 +45,17 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        //Memanggil fungsi Movement
-        Movement();
-        //Memanggil fungsi HanldeGravity
-        HandleGravity();
-        //Memanggil fungsi HandleMovement
-        HandleMovement();
-        //Memanggil fungsi DestroyGround
         DestroyGround();
     
     }
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+
+        Movement();
+        HandleMovement();
+        HandleGravity();
+       
     }
     private void Movement()
     {
@@ -70,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
         if (moveDirection.magnitude == 0)
         {
             // Anda dapat mengatur nilai default di sini jika Anda ingin pemain berhenti sepenuhnya
-            // moveDirection = Vector2.zero;
+            moveDirection = Vector2.zero;
             // Atau Anda dapat mempertahankan arah pergerakan sebelumnya
         }
 
