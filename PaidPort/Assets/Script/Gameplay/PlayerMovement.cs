@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float lastDamageTime = 0f;
     private Vector2 moveDirection;
+    private SpriteRenderer spriteRenderer;
 
 
 
@@ -41,7 +42,8 @@ public class PlayerMovement : MonoBehaviour
     {
         ////Set gravitasi dari awal langsung ada
         rb.gravityScale = gravityDown;
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
     }
     void Update()
     {
@@ -85,16 +87,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Facing(bool isFacingRight)
     {
-        //Fungsi untuk membalik player
-        if (isFacingRight == true)
+        if (isFacingRight)
         {
-            transform.localScale = new Vector3(1, 1, 1);
-            return;
+            spriteRenderer.flipX = false; // Tidak flip
         }
-        if (isFacingRight == false)
+        else
         {
-            transform.localScale = new Vector3(-1, 1, 1);
-            return;
+            spriteRenderer.flipX = true; // Melakukan flip pada sumbu X
         }
 
     }
