@@ -8,10 +8,9 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
 
-    private int bronzeCount = 0; 
-    private int silverCount = 0;
-    private int goldCount = 0;
-    private int diamondCount = 0;
+    private Dictionary<string, int> inventory = new Dictionary<string, int>(); // Dictionary untuk menyimpan bahan
+    private int maxLimit = 10; // Batas maksimal untuk keseluruhan bahan dalam inventaris
+    private int totalItems = 0; // Jumlah total dari semua bahan dalam inventaris
 
     public Canvas inventoryCanvas;
     public Text bronzeCountText;
@@ -20,7 +19,6 @@ public class InventoryManager : MonoBehaviour
     public Text diamondCountText;
 
     private bool isInventoryActive = false;
-
 
     private void Awake()
     {
@@ -34,6 +32,12 @@ public class InventoryManager : MonoBehaviour
         }
 
         inventoryCanvas.gameObject.SetActive(false);
+
+        // Tambahkan item-item awal ke dalam dictionary dengan nilai 0
+        inventory.Add("Bronze", 0);
+        inventory.Add("Silver", 0);
+        inventory.Add("Gold", 0);
+        inventory.Add("Diamond", 0);
     }
 
     private void Update()
@@ -43,51 +47,44 @@ public class InventoryManager : MonoBehaviour
             ToggleInventoryCanvas();
         }
 
-        // Menutup Inventory Canvas jika sedang aktif dan pemain menekan tombol apa pun
         if (inventoryCanvas.gameObject.activeSelf && !Input.GetKey(KeyCode.I) && Input.anyKeyDown)
         {
             inventoryCanvas.gameObject.SetActive(false);
         }
     }
 
-    public void AddBronze(int amount)
+    public void AddItem(string item, int amount)
     {
-        bronzeCount += amount;
-        Debug.Log("Bronze added to inventory: " + amount );
-
-        if (isInventoryActive)
+        if (inventory.ContainsKey(item))
         {
-            UpdateBronzeCountText();
+            int newTotal = totalItems + amount;
+            if (newTotal <= maxLimit) // Periksa apakah penambahan tidak melampaui batas maksimal
+            {
+                if (inventory[item] + amount >= 0) // Pastikan tidak ada bahan yang bernilai negatif
+                {
+                    totalItems = newTotal;
+                    inventory[item] += amount;
+
+                    Debug.Log(item + " added to inventory: " + amount);
+
+                    if (isInventoryActive)
+                    {
+                        UpdateItemCountText(item);
+                    }
+                }
+                else
+                {
+                    Debug.Log("Invalid operation: Cannot have negative items in inventory.");
+                }
+            }
+            else
+            {
+                Debug.Log("Inventory full. Cannot add more items.");
+            }
         }
-    }
-    public void AddSilver(int amount)
-    {
-        silverCount += amount;
-        Debug.Log("Silver added to inventory: " + amount );
-
-        if (isInventoryActive)
+        else
         {
-            UpdateSilverCountText();
-        }
-    }
-    public void AddGold(int amount)
-    {
-        goldCount += amount;
-        Debug.Log("Gold added to inventory: " + amount);
-
-        if (isInventoryActive)
-        {
-            UpdateGoldCountText();
-        }
-    }
-    public void AddDiamond(int amount)
-    {
-        diamondCount += amount;
-        Debug.Log("Diamond added to inventory: " + amount);
-
-        if (isInventoryActive)
-        {
-            UpdateDiamondCountText();
+            Debug.Log("Item " + item + " does not exist in inventory.");
         }
     }
 
@@ -98,28 +95,33 @@ public class InventoryManager : MonoBehaviour
 
         if (isInventoryActive)
         {
-            UpdateBronzeCountText();
-            UpdateSilverCountText();
-            UpdateGoldCountText();
-            UpdateDiamondCountText();
+            UpdateItemCountText("Bronze");
+            UpdateItemCountText("Silver");
+            UpdateItemCountText("Gold");
+            UpdateItemCountText("Diamond");
         }
     }
 
-    private void UpdateBronzeCountText()
+    private void UpdateItemCountText(string item)
     {
-        bronzeCountText.text = "Bronze: " + bronzeCount;
-    }
-
-    private void UpdateSilverCountText()
-    {
-        silverCountText.text = "Silver: " + silverCount;
-    }
-    private void UpdateGoldCountText()
-    {
-        goldCountText.text = "Gold: " + goldCount;
-    }
-    private void UpdateDiamondCountText()
-    {
-        diamondCountText.text = "Diamond: " + diamondCount;
+        switch (item)
+        {
+            case "Bronze":
+                bronzeCountText.text = "Bronze: " + inventory[item];
+                break;
+            case "Silver":
+                silverCountText.text = "Silver: " + inventory[item];
+                break;
+            case "Gold":
+                goldCountText.text = "Gold: " + inventory[item];
+                break;
+            case "Diamond":
+                diamondCountText.text = "Diamond: " + inventory[item];
+                break;
+            default:
+                break;
+        }
     }
 }
+
+

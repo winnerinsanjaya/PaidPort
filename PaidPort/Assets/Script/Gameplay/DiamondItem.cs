@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DiamondItem : MonoBehaviour
 {
-    public int diamondCount = 1;
+    public int amountToAdd = 1;
 
     private void OnDestroy()
     {
@@ -13,7 +13,7 @@ public class DiamondItem : MonoBehaviour
         if (playerCollider != null && playerCollider.CompareTag("Player"))
         {
 
-            InventoryManager.Instance.AddDiamond(diamondCount);
+            InventoryManager.Instance.AddItem("Diamond", amountToAdd);
         }
     }
 

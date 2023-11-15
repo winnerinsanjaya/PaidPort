@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BronzeItem : MonoBehaviour
 {
-    public int bronzeCount = 1;
+    public int amountToAdd = 1;
 
     private void OnDestroy()
     {
@@ -12,8 +12,8 @@ public class BronzeItem : MonoBehaviour
 
         if (playerCollider != null && playerCollider.CompareTag("Player"))
         {
-           
-            InventoryManager.Instance.AddBronze(bronzeCount);
+
+            InventoryManager.Instance.AddItem("Bronze", amountToAdd);
         }
     }
 

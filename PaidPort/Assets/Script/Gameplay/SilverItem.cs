@@ -5,7 +5,7 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class SilverItem : MonoBehaviour
 {
-    public int silverCount = 1; 
+    public int amountToAdd = 1;
 
     private void OnDestroy()
     {
@@ -13,8 +13,8 @@ public class SilverItem : MonoBehaviour
 
         if (playerCollider != null && playerCollider.CompareTag("Player"))
         {
-            
-            InventoryManager.Instance.AddSilver(silverCount);
+
+            InventoryManager.Instance.AddItem("Silver", amountToAdd);
         }
     }
 

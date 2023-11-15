@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GoldItem : MonoBehaviour
 {
-    public int goldCount = 1;
+    public int amountToAdd = 1;
 
     private void OnDestroy()
     {
@@ -13,7 +13,7 @@ public class GoldItem : MonoBehaviour
         if (playerCollider != null && playerCollider.CompareTag("Player"))
         {
 
-            InventoryManager.Instance.AddGold(goldCount);
+            InventoryManager.Instance.AddItem("Gold", amountToAdd);
         }
     }
 
