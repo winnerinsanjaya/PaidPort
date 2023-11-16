@@ -10,9 +10,18 @@ public class FuelStation : MonoBehaviour
     private GameObject FuelScreen;
     [SerializeField]
     private GameObject GameScreen;
+    public FuelBar fuelBar;
 
     private bool inArea;
     int itemCost = 50;
+
+
+
+    void Start()
+    {
+        // Mendapatkan komponen PlayerHealth dari objek dengan skrip PlayerHealth
+        fuelBar = GameObject.FindObjectOfType<FuelBar>();
+    }
 
 
 
@@ -59,6 +68,7 @@ public class FuelStation : MonoBehaviour
         {
             // Jika pemain memiliki cukup uang, kurangi uang pemain sesuai dengan harga item.
             GameManager.Instance.SubtractMoney(itemCost);
+            fuelBar.ResetHealth();
             Debug.Log("Fuel bertambah");
            
         }

@@ -55,6 +55,14 @@ public class FuelBar : MonoBehaviour
         float fillAmount = (float)currentFuel / totalFuel;
         fuelBarImage.fillAmount = fillAmount;
     }
+    public void ResetHealth()
+    {
+        currentFuel = totalFuel;
+        UpdateFuelBar();
+        Debug.Log("Health direset ke nilai awal: " + currentFuel);
+        // Tambahkan logika lain yang diperlukan setelah reset health
+    }
+
 }
 
 
