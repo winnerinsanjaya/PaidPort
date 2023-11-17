@@ -107,16 +107,16 @@ public class InventoryManager : MonoBehaviour
         switch (item)
         {
             case "Bronze":
-                bronzeCountText.text = "Bronze: " + inventory[item];
+                bronzeCountText.text = "Bronze x " + inventory[item];
                 break;
             case "Silver":
-                silverCountText.text = "Silver: " + inventory[item];
+                silverCountText.text = "Silver x " + inventory[item];
                 break;
             case "Gold":
-                goldCountText.text = "Gold: " + inventory[item];
+                goldCountText.text = "Gold x " + inventory[item];
                 break;
             case "Diamond":
-                diamondCountText.text = "Diamond: " + inventory[item];
+                diamondCountText.text = "Diamond x " + inventory[item];
                 break;
             default:
                 break;
