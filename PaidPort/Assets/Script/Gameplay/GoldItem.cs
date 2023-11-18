@@ -13,7 +13,7 @@ public class GoldItem : MonoBehaviour
         if (playerCollider != null && playerCollider.CompareTag("Player"))
         {
 
-            InventoryManager.Instance.AddItem("Gold", amountToAdd);
+            GameManager.Instance.AddItem("Gold", amountToAdd);
         }
     }
 

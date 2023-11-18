@@ -14,7 +14,7 @@ public class SilverItem : MonoBehaviour
         if (playerCollider != null && playerCollider.CompareTag("Player"))
         {
 
-            InventoryManager.Instance.AddItem("Silver", amountToAdd);
+            GameManager.Instance.AddItem("Silver", amountToAdd);
         }
     }
 
