@@ -6,8 +6,7 @@ using UnityEngine;
 public class GroundHealth : MonoBehaviour
 {
     public float maxHealth = 20f;
-    [SerializeField]
-    private float healDelay = 1.5f;
+    private float healDelay = 1.1f;
     private float currentHealth;
     private float lastDamageTime;
 
