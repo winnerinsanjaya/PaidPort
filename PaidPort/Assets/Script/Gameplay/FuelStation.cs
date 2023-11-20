@@ -13,7 +13,7 @@ public class FuelStation : MonoBehaviour
     public FuelBar fuelBar;
 
     private bool inArea;
-    int itemCost = 50;
+    int itemCost = 500;
 
 
 
@@ -66,7 +66,7 @@ public class FuelStation : MonoBehaviour
     {
         if (GameManager.Instance.GetPlayerMoney() >= itemCost)
         {
-            // Jika pemain memiliki cukup uang, kurangi uang pemain sesuai dengan harga item.
+            
             GameManager.Instance.SubtractMoney(itemCost);
             fuelBar.ResetHealth();
             Debug.Log("Fuel bertambah");

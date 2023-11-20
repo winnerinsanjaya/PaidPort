@@ -68,9 +68,9 @@ public class GameManager : MonoBehaviour
         if (inventory.ContainsKey(item))
         {
             int newTotal = totalItems + amount;
-            if (newTotal <= maxLimit) // Periksa apakah penambahan tidak melampaui batas maksimal
+            if (newTotal <= maxLimit) 
             {
-                if (inventory[item] + amount >= 0) // Pastikan tidak ada bahan yang bernilai negatif
+                if (inventory[item] + amount >= 0)
                 {
                     totalItems = newTotal;
                     inventory[item] += amount;
@@ -101,12 +101,11 @@ public class GameManager : MonoBehaviour
     public void SellAllItems()
     {
         int totalValue = 0;
-        List<string> itemsToSell = new List<string>(inventory.Keys); // Salin keys dari dictionary inventory ke List
-
+        List<string> itemsToSell = new List<string>(inventory.Keys);
         foreach (var item in itemsToSell)
         {
             totalValue += inventory[item] * GetValueOfItem(item);
-            inventory[item] = 0; // Jual semua item sehingga jumlahnya menjadi 0
+            inventory[item] = 0; 
         }
 
         money += totalValue;
@@ -116,9 +115,6 @@ public class GameManager : MonoBehaviour
     }
     private int GetValueOfItem(string item)
     {
-        // Fungsi ini dapat dikembangkan untuk memberikan nilai yang berbeda untuk setiap item yang dijual
-        // Misalnya, Anda dapat memiliki daftar harga yang berbeda untuk setiap item.
-        // Sementara contoh ini memberikan nilai tetap untuk setiap item.
         switch (item)
         {
             case "Bronze":
