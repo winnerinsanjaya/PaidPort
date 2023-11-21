@@ -78,6 +78,10 @@ public class DayNightCycle : MonoBehaviour
                 if (currentDay > 7)
                 {
                     currentDay = 1;
+                    Time.timeScale = 0;
+                    Debug.Log("Siklus hari telah selesai.");
+                    enabled = false;
+                    return;
                 }
 
 
