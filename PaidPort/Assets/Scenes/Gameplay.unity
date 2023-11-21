@@ -8908,7 +8908,6 @@ GameObject:
   - component: {fileID: 1286349562}
   - component: {fileID: 1286349566}
   - component: {fileID: 1286349567}
-  - component: {fileID: 1286349568}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -9073,6 +9072,7 @@ MonoBehaviour:
   fallSpeed: 10
   gravityDown: 20
   gravityUp: 5
+  healthBar: {fileID: 64471348}
   playerCollider: {fileID: 1286349567}
   damagePerHit: 10
   groundLayer:
@@ -9123,20 +9123,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7253008, y: 0.7527435}
   m_EdgeRadius: 0
---- !u!114 &1286349568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1286349561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1faec11452a53b478a30d598937bc8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fallDamageMultiplier: 1.5
-  minFallDamageHeight: 3
 --- !u!1 &1286449547
 GameObject:
   m_ObjectHideFlags: 0

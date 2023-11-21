@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 
 {
-    public int maxHealth = 100;
-    public int currentHealth;
+    public float maxHealth = 100;
+    public float currentHealth;
 
     public Image healthBar;
 
@@ -19,14 +19,10 @@ public class HealthBar : MonoBehaviour
 
     void Update()
     {
-        // Contoh: Kurangi health setiap kali pemain diserang atau terkena sesuatu
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            TakeDamage(20); // Contoh: Serangan mengurangi 20 health
-        }
+      
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // Memastikan health tidak kurang dari 0 atau lebih dari maxHealth

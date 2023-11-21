@@ -18,6 +18,10 @@ public class PlayerMovement : MonoBehaviour
     private float gravityDown = 20f;
     [SerializeField]
     private float gravityUp = 5f;
+    private float originalGravityDown;
+    private bool isFalling = false;
+    public HealthBar healthBar;
+    private bool hasReceivedDamage = false;
 
     [SerializeField]
     private Collider2D playerCollider;
@@ -42,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
         ////Set gravitasi dari awal langsung ada
         rb.gravityScale = gravityDown;
         spriteRenderer = GetComponent<SpriteRenderer>();
-
+        originalGravityDown = gravityDown;
     }
     void Update()
     {
@@ -98,9 +102,51 @@ public class PlayerMovement : MonoBehaviour
     }
     void HandleGravity()
     {
-        float currentGravity = movement.y > 0 ? gravityUp : gravityDown;
-        rb.gravityScale = currentGravity;
+        if (IsGrounded())
+        {
+            
+            isFalling = false;
+        }
+        else if (movement.y <= 0 && !isFalling)
+        {
+            rb.gravityScale = 20f;
+            isFalling = true;
+        }
+
+        if (isFalling && rb.gravityScale < 35f)
+        {
+            rb.gravityScale += Time.fixedDeltaTime * 10f;
+        }
+
+        if (movement.y > 0)
+        {
+            rb.gravityScale = gravityUp;
+            isFalling = false;
+            hasReceivedDamage = false;
+        }
+        if (IsGrounded() && rb.gravityScale > 30f && !hasReceivedDamage)
+        {
+            FallDamage();
+            
+        }
+
+        
+        if (IsGrounded() && (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow)))
+        {
+            rb.gravityScale = gravityDown;
+            hasReceivedDamage = false;
+        }
     }
+   
+    void FallDamage()
+    {
+        if (healthBar != null)
+        {
+            healthBar.TakeDamage(30);
+            hasReceivedDamage = true;
+        }
+    }
+
     void HandleMovement()
     {
         rb.velocity = new Vector2(movement.x * fallSpeed, rb.velocity.y);
