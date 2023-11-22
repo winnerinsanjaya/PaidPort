@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     private Dictionary<string, int> inventory = new Dictionary<string, int>();
     private int maxLimit = 10;
     private int totalItems = 0;
-    private int money = 100;
+    private int money = 500;
 
     public Canvas inventoryCanvas;
     public Text bronzeCountText;

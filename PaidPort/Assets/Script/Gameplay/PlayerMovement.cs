@@ -25,8 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private Collider2D playerCollider;
-    [SerializeField]
-    private float damagePerHit = 10f;
+    public float damagePerHit = 10f;
     private float lastDamageTime = 0f;
     private Vector2 moveDirection;
     private SpriteRenderer spriteRenderer;
