@@ -11,12 +11,21 @@ public class GarageBuilding : MonoBehaviour
     private GameObject GarageScreen;
     [SerializeField]
     private GameObject GameScreen;
+    [SerializeField] 
+    private GameObject ServiceScreen;
+    [SerializeField]
+    private GameObject UpgradeScreen;
     [SerializeField]
     private PlayerMovement playerMovement;
     [SerializeField]
     private Button damageButton;
     [SerializeField]
     private Text upgradeCostTextDamage;
+
+    private bool isGarageScreenActive = false;
+    private bool isServiceScreenActive = true;
+    private bool isUpgradeScreenActive = false;
+
 
 
     private bool inArea;
@@ -45,9 +54,29 @@ public class GarageBuilding : MonoBehaviour
             {
                 Time.timeScale = 0;
                 GarageScreen.SetActive(true);
+                ServiceScreen.SetActive(true);
                 GameScreen.SetActive(false);
+                isGarageScreenActive = true;
             }
         }
+        if (isGarageScreenActive && Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (isServiceScreenActive)
+            {
+                ServiceScreen.SetActive(false);
+                UpgradeScreen.SetActive(true);
+                isServiceScreenActive = false;
+                isUpgradeScreenActive = true;
+            }
+            else if (isUpgradeScreenActive)
+            {
+                ServiceScreen.SetActive(true);
+                UpgradeScreen.SetActive(false);
+                isServiceScreenActive = true;
+                isUpgradeScreenActive = false;
+            }
+        }
+
     }
     public void Exit()
     {
