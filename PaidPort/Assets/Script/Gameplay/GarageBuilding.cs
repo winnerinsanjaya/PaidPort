@@ -15,6 +15,8 @@ public class GarageBuilding : MonoBehaviour
     private PlayerMovement playerMovement;
     [SerializeField]
     private Button damageButton;
+    [SerializeField]
+    private Text upgradeCostTextDamage;
 
 
     private bool inArea;
@@ -55,18 +57,20 @@ public class GarageBuilding : MonoBehaviour
     }
     public void UpdateDamage()
     {
-        if (GameManager.Instance.GetPlayerMoney() >= 150)
+        if (playerMovement.damagePerHit == 10f) // Upgrade dari level 1 ke level 2
         {
-
-            playerMovement.damagePerHit = 20f;
-            GameManager.Instance.SubtractMoney(150);
-
-
-            if (playerMovement.damagePerHit == 20f)
+            if (GameManager.Instance.GetPlayerMoney() >= 150)
             {
+                playerMovement.damagePerHit = 20f;
+                GameManager.Instance.SubtractMoney(150);
+
                 if (damageButton != null)
                 {
                     damageButton.GetComponentInChildren<Text>().text = "Upgrade To level 3";
+                }
+                if (upgradeCostTextDamage != null)
+                {
+                    upgradeCostTextDamage.text = "Upgrade Cost: 200Gc"; 
                 }
             }
             else
@@ -74,23 +78,20 @@ public class GarageBuilding : MonoBehaviour
                 Debug.Log("Uang tidak cukup untuk upgrade Drill ke lvl 2");
             }
         }
-
-
-        else if (playerMovement.damagePerHit == 20f)
+        else if (playerMovement.damagePerHit == 20f) // Upgrade dari level 2 ke level 3
         {
-
             if (GameManager.Instance.GetPlayerMoney() >= 200)
             {
                 playerMovement.damagePerHit = 30f;
-
                 GameManager.Instance.SubtractMoney(200);
-            }
 
-            if (playerMovement.damagePerHit == 30f)
-            {
                 if (damageButton != null)
                 {
                     damageButton.GetComponentInChildren<Text>().text = "Upgrade To level 4";
+                }
+                if (upgradeCostTextDamage != null)
+                {
+                    upgradeCostTextDamage.text = "Upgrade Cost: 300Gc"; 
                 }
             }
             else
@@ -98,7 +99,11 @@ public class GarageBuilding : MonoBehaviour
                 Debug.Log("Uang tidak cukup untuk upgrade Drill ke level 3");
             }
         }
+        // Tambahkan blok kode untuk upgrade ke level selanjutnya jika diperlukan
     }
+
 }
+    
+
 
 
