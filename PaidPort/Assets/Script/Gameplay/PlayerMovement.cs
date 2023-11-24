@@ -141,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (healthBar != null)
         {
-            healthBar.TakeDamage(30);
+            healthBar.TakeDamage(5);
             hasReceivedDamage = true;
         }
     }

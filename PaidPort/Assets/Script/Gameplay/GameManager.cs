@@ -8,9 +8,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     private Dictionary<string, int> inventory = new Dictionary<string, int>();
-    private int maxLimit = 10;
-    private int totalItems = 0;
-    private int money = 500;
+    public int maxLimit = 10;
+    public int totalItems = 0;
+    private int money = 10000;
 
     public Canvas inventoryCanvas;
     public Text bronzeCountText;

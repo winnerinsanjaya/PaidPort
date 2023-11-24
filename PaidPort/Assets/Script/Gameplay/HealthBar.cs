@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 
 {
-    public float maxHealth = 100;
+    public float maxHealth = 10;
     public float currentHealth;
 
     public Image healthBar;
@@ -19,7 +19,7 @@ public class HealthBar : MonoBehaviour
 
     void Update()
     {
-      
+        
     }
 
     public void TakeDamage(float damage)
@@ -41,7 +41,7 @@ public class HealthBar : MonoBehaviour
         // Misalnya: UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverScene");
     }
 
-    void UpdateHealthBar()
+   public void UpdateHealthBar()
     {
         float healthPercentage = (float)currentHealth / maxHealth;
         healthBar.fillAmount = healthPercentage;
