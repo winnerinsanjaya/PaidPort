@@ -40,12 +40,20 @@ public class HealthBar : MonoBehaviour
         Debug.Log("Player mati");
         // Misalnya: UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverScene");
     }
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;
+        UpdateHealthBar();
+        Debug.Log("Health direset ke nilai awal: " + currentHealth);
+        // Tambahkan logika lain yang diperlukan setelah reset health
+    }
 
-   public void UpdateHealthBar()
+    public void UpdateHealthBar()
     {
         float healthPercentage = (float)currentHealth / maxHealth;
         healthBar.fillAmount = healthPercentage;
     }
+  
 }
 
 

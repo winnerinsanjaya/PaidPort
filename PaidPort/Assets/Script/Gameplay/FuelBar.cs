@@ -50,7 +50,7 @@ public class FuelBar : MonoBehaviour
         // Tambahkan kode kematian di sini sesuai kebutuhan game Anda
     }
 
-    void UpdateFuelBar()
+    public void UpdateFuelBar()
     {
         float fillAmount = (float)currentFuel / totalFuel;
         fuelBarImage.fillAmount = fillAmount;

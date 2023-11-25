@@ -106,7 +106,22 @@ public class GarageBuilding : MonoBehaviour
         GarageScreen.SetActive(false);
         GameScreen.SetActive(true);
     }
+    public void ServiceButton()
+    {
+        if (GameManager.Instance.GetPlayerMoney() >= 500)
+        {
 
+            GameManager.Instance.SubtractMoney(500);
+            healthBar.ResetHealth();
+            Debug.Log("Fuel bertambah");
+
+        }
+        else
+        {
+
+            Debug.Log("Uang tidak cukup");
+        }
+    }
     public void UpdateDamage()
     {
         if (playerMovement.damagePerHit == 10f) // Upgrade dari level 1 ke level 2
@@ -246,73 +261,145 @@ public class GarageBuilding : MonoBehaviour
             }
         }
     }
-        public void UpdateInventory()
+    public void UpdateInventory()
+    {
+        if (gameManager.maxLimit == 10) // Upgrade dari level 1 ke level 2
         {
-            if (gameManager.maxLimit == 10) // Upgrade dari level 1 ke level 2
+            if (GameManager.Instance.GetPlayerMoney() >= 750)
             {
-                if (GameManager.Instance.GetPlayerMoney() >= 750)
-                {
-                    gameManager.maxLimit = 20;
-                    GameManager.Instance.SubtractMoney(750);
+                gameManager.maxLimit = 20;
+                GameManager.Instance.SubtractMoney(750);
 
-                    if (inventoryButton != null)
-                    {
-                        inventoryButton.GetComponentInChildren<Text>().text = "Upgrade To level 3";
-                    }
-                    if (upgradeCostTextInventory != null)
-                    {
-                        upgradeCostTextInventory.text = "Upgrade Cost: 2000Gc";
-                    }
-                }
-                else
+                if (inventoryButton != null)
                 {
-                    Debug.Log("Uang tidak cukup untuk upgrade Inventory ke lvl 2");
+                    inventoryButton.GetComponentInChildren<Text>().text = "Upgrade To level 3";
+                }
+                if (upgradeCostTextInventory != null)
+                {
+                    upgradeCostTextInventory.text = "Upgrade Cost: 2000Gc";
                 }
             }
-            else if (gameManager.maxLimit == 20) // Upgrade dari level 2 ke level 3
+            else
             {
-                if (GameManager.Instance.GetPlayerMoney() >= 2000)
-                {
-                    gameManager.maxLimit = 30;
-                    GameManager.Instance.SubtractMoney(2000);
+                Debug.Log("Uang tidak cukup untuk upgrade Inventory ke lvl 2");
+            }
+        }
+        else if (gameManager.maxLimit == 20) // Upgrade dari level 2 ke level 3
+        {
+            if (GameManager.Instance.GetPlayerMoney() >= 2000)
+            {
+                gameManager.maxLimit = 30;
+                GameManager.Instance.SubtractMoney(2000);
 
-                    if (inventoryButton != null)
-                    {
-                        inventoryButton.GetComponentInChildren<Text>().text = "Upgrade To level 4";
-                    }
-                    if (upgradeCostTextInventory != null)
-                    {
-                        upgradeCostTextInventory.text = "Upgrade Cost: 5000Gc";
-                    }
-                }
-                else
+                if (inventoryButton != null)
                 {
-                    Debug.Log("Uang tidak cukup untuk upgrade Inventory ke level 3");
+                    inventoryButton.GetComponentInChildren<Text>().text = "Upgrade To level 4";
+                }
+                if (upgradeCostTextInventory != null)
+                {
+                    upgradeCostTextInventory.text = "Upgrade Cost: 5000Gc";
                 }
             }
-            else if (gameManager.maxLimit == 30) // Upgrade dari level 3 ke level 4
+            else
             {
-                if (GameManager.Instance.GetPlayerMoney() >= 5000)
-                {
-                    gameManager.maxLimit = 40;
-                    GameManager.Instance.SubtractMoney(5000);
+                Debug.Log("Uang tidak cukup untuk upgrade Inventory ke level 3");
+            }
+        }
+        else if (gameManager.maxLimit == 30) // Upgrade dari level 3 ke level 4
+        {
+            if (GameManager.Instance.GetPlayerMoney() >= 5000)
+            {
+                gameManager.maxLimit = 40;
+                GameManager.Instance.SubtractMoney(5000);
 
-                    if (inventoryButton != null)
-                    {
-                        inventoryButton.GetComponentInChildren<Text>().text = "Max";
-                    }
-                    if (upgradeCostTextInventory != null)
-                    {
-                        upgradeCostTextInventory.text = "Max";
-                    }
-                }
-                else
+                if (inventoryButton != null)
                 {
-                    Debug.Log("Uang tidak cukup untuk upgrade Inventory ke level 4");
+                    inventoryButton.GetComponentInChildren<Text>().text = "Max";
                 }
+                if (upgradeCostTextInventory != null)
+                {
+                    upgradeCostTextInventory.text = "Max";
+                }
+            }
+            else
+            {
+                Debug.Log("Uang tidak cukup untuk upgrade Inventory ke level 4");
             }
         }
     }
+    public void UpdateFuel()
+    {
+        if (fuelBar.totalFuel == 100) // Upgrade dari level 1 ke level 2
+        {
+            if (GameManager.Instance.GetPlayerMoney() >= 750)
+            {
+                fuelBar.totalFuel = 150;
+                fuelBar.currentFuel = 150;
+                fuelBar.UpdateFuelBar();
+                GameManager.Instance.SubtractMoney(750);
+
+                if (fuelButton != null)
+                {
+                    fuelButton.GetComponentInChildren<Text>().text = "Upgrade To level 3";
+                }
+                if (upgradeCostTextFuel != null)
+                {
+                    upgradeCostTextFuel.text = "Upgrade Cost: 2000Gc";
+                }
+            }
+            else
+            {
+                Debug.Log("Uang tidak cukup untuk upgrade Fuel Tank ke lvl 2");
+            }
+        }
+        else if (fuelBar.totalFuel == 150) // Upgrade dari level 2 ke level 3
+        {
+            if (GameManager.Instance.GetPlayerMoney() >= 2000)
+            {
+                fuelBar.totalFuel = 200;
+                fuelBar.currentFuel = 200;
+                fuelBar.UpdateFuelBar();
+                GameManager.Instance.SubtractMoney(2000);
+
+                if (fuelButton != null)
+                {
+                    fuelButton.GetComponentInChildren<Text>().text = "Upgrade To level 4";
+                }
+                if (upgradeCostTextFuel != null)
+                {
+                    upgradeCostTextFuel.text = "Upgrade Cost: 5000Gc";
+                }
+            }
+            else
+            {
+                Debug.Log("Uang tidak cukup untuk upgrade Fuel Tank ke level 3");
+            }
+        }
+        else if (fuelBar.totalFuel == 200) // Upgrade dari level 3 ke level 4
+        {
+            if (GameManager.Instance.GetPlayerMoney() >= 5000)
+            {
+                fuelBar.totalFuel = 300;
+                fuelBar.currentFuel = 300;
+                fuelBar.UpdateFuelBar();
+                GameManager.Instance.SubtractMoney(5000);
+
+                if (fuelButton != null)
+                {
+                    fuelButton.GetComponentInChildren<Text>().text = "Max";
+                }
+                if (upgradeCostTextFuel != null)
+                {
+                    upgradeCostTextFuel.text = "Max";
+                }
+            }
+            else
+            {
+                Debug.Log("Uang tidak cukup untuk upgrade Drill ke level 4");
+            }
+        }
+    }
+}
 
 
     
