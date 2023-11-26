@@ -16860,6 +16860,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6860836423461349480, guid: a0a6b51456a0cf64b9308a38c15851ba, type: 3}
+      propertyPath: blackSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0b03d4b8f0aab2546962903055777931, type: 3}
+    - target: {fileID: 6860836423461349480, guid: a0a6b51456a0cf64b9308a38c15851ba, type: 3}
+      propertyPath: overlaySprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dbfa6c0c2dcdc284c8a49f2980732f80, type: 3}
+    - target: {fileID: 6860836423461349480, guid: a0a6b51456a0cf64b9308a38c15851ba, type: 3}
+      propertyPath: originalSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7e10691ae097bb94aa93e1194e6b871a, type: 3}
+    - target: {fileID: 6860836423461349480, guid: a0a6b51456a0cf64b9308a38c15851ba, type: 3}
+      propertyPath: groundSpriteRenderer
+      value: 
+      objectReference: {fileID: 4178658380374929167}
     - target: {fileID: 7470638850222856762, guid: a0a6b51456a0cf64b9308a38c15851ba, type: 3}
       propertyPath: m_Name
       value: Silver
@@ -16926,6 +16942,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!212 &4178658380374929167 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7592438098486858253, guid: a0a6b51456a0cf64b9308a38c15851ba, type: 3}
+  m_PrefabInstance: {fileID: 4178658380374929162}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5472248527765371291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16934,6 +16955,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1117311546}
     m_Modifications:
+    - target: {fileID: 85223260008358046, guid: 8eb818ab564c4ec46980bed4d675cb0b, type: 3}
+      propertyPath: permanentSeenRadius
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2142808884130441356, guid: 8eb818ab564c4ec46980bed4d675cb0b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -36.08
@@ -17084,6 +17109,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5046861027160460683, guid: b24480cc775010d4aafba5563d806685, type: 3}
+      propertyPath: blackSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0b03d4b8f0aab2546962903055777931, type: 3}
+    - target: {fileID: 5046861027160460683, guid: b24480cc775010d4aafba5563d806685, type: 3}
+      propertyPath: overlaySprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9d8957f2a9e38aa47b45fa9704dcad5e, type: 3}
+    - target: {fileID: 5046861027160460683, guid: b24480cc775010d4aafba5563d806685, type: 3}
+      propertyPath: originalSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 20ab58e9f73fda940ab416b044c776ef, type: 3}
+    - target: {fileID: 5046861027160460683, guid: b24480cc775010d4aafba5563d806685, type: 3}
+      propertyPath: groundSpriteRenderer
+      value: 
+      objectReference: {fileID: 6997577778434137830}
     - target: {fileID: 8746881980816351832, guid: b24480cc775010d4aafba5563d806685, type: 3}
       propertyPath: m_Name
       value: Bronze
@@ -17150,6 +17191,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!212 &6997577778434137830 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1570004876559886464, guid: b24480cc775010d4aafba5563d806685, type: 3}
+  m_PrefabInstance: {fileID: 6997577778434137825}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7665301204117701245
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17284,6 +17330,22 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 7198494806822150185, guid: 12a0970b28d29d24b94e382bc261feaa, type: 3}
+      propertyPath: blackSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0b03d4b8f0aab2546962903055777931, type: 3}
+    - target: {fileID: 7198494806822150185, guid: 12a0970b28d29d24b94e382bc261feaa, type: 3}
+      propertyPath: overlaySprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4aaa04be495ddd349afc969c9c6eb352, type: 3}
+    - target: {fileID: 7198494806822150185, guid: 12a0970b28d29d24b94e382bc261feaa, type: 3}
+      propertyPath: originalSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4cdd6c3c5baaed34d98fd22beed2259c, type: 3}
+    - target: {fileID: 7198494806822150185, guid: 12a0970b28d29d24b94e382bc261feaa, type: 3}
+      propertyPath: groundSpriteRenderer
+      value: 
+      objectReference: {fileID: 8214542246681390303}
     - target: {fileID: 8490011043009624699, guid: 12a0970b28d29d24b94e382bc261feaa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -38.030003
@@ -17382,6 +17444,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!212 &8214542246681390303 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8252814073495652073, guid: 12a0970b28d29d24b94e382bc261feaa, type: 3}
+  m_PrefabInstance: {fileID: 8214542246681390298}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8632808203780463399
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17402,6 +17469,22 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 8671103432536235869, guid: eca673a6357ccf448babc9ab24f57c01, type: 3}
+      propertyPath: blackSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0b03d4b8f0aab2546962903055777931, type: 3}
+    - target: {fileID: 8671103432536235869, guid: eca673a6357ccf448babc9ab24f57c01, type: 3}
+      propertyPath: overlaySprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4659a1c65bb4e27449e0934ef1b10e0e, type: 3}
+    - target: {fileID: 8671103432536235869, guid: eca673a6357ccf448babc9ab24f57c01, type: 3}
+      propertyPath: originalSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b7155bd474abf914a8ce37281fc52697, type: 3}
+    - target: {fileID: 8671103432536235869, guid: eca673a6357ccf448babc9ab24f57c01, type: 3}
+      propertyPath: groundSpriteRenderer
+      value: 
+      objectReference: {fileID: 8632808203780463404}
     - target: {fileID: 9208428455543089768, guid: eca673a6357ccf448babc9ab24f57c01, type: 3}
       propertyPath: m_LocalPosition.x
       value: -39.86
@@ -17500,6 +17583,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!212 &8632808203780463404 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8752120540134241690, guid: eca673a6357ccf448babc9ab24f57c01, type: 3}
+  m_PrefabInstance: {fileID: 8632808203780463399}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

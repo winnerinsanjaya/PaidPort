@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8752120540134241690}
   - component: {fileID: 5462282082284240088}
   - component: {fileID: 3922703308894622254}
+  - component: {fileID: 8671103432536235869}
   m_Layer: 0
   m_Name: Diamond
   m_TagString: Untagged
@@ -99,7 +100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 20
-  healDelay: 1.5
 --- !u!114 &3922703308894622254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,4 +112,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb4af7922a27c4d41b4bb3e03a5daf82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diamondCount: 1
+  amountToAdd: 1
+--- !u!114 &8671103432536235869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526298566242928570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 793701b692eef484e89dfee046f212c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundSpriteRenderer: {fileID: 0}
+  originalSprite: {fileID: 0}
+  blackSprite: {fileID: 0}
+  overlaySprite: {fileID: 0}
+  visionRange: 5
+  overlayRadius: 1.5

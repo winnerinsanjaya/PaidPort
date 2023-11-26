@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2142808884130441356}
   - component: {fileID: 783258277329008144}
   - component: {fileID: 5399485679554963724}
+  - component: {fileID: 85223260008358046}
   m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
@@ -98,3 +99,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 20
+--- !u!114 &85223260008358046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5335273277348165299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 793701b692eef484e89dfee046f212c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundSpriteRenderer: {fileID: 783258277329008144}
+  originalSprite: {fileID: 21300000, guid: bb96f476bee16b647aa3603475ada8fb, type: 3}
+  blackSprite: {fileID: 21300000, guid: 0b03d4b8f0aab2546962903055777931, type: 3}
+  overlaySprite: {fileID: 21300000, guid: cbc22900196b3f247be39b38b73357a0, type: 3}
+  visionRange: 5
+  overlayRadius: 1.5
+  permanentSeenRadius: 3
