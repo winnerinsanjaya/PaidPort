@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public int maxLimit = 10;
     public int totalItems = 0;
     private int money = 10000;
+    [SerializeField]
+    private Text FeedbackText;
 
     public Canvas inventoryCanvas;
     public Text bronzeCountText;
@@ -48,6 +50,8 @@ public class GameManager : MonoBehaviour
         UpdateItemCountText("Silver");
         UpdateItemCountText("Gold");
         UpdateItemCountText("Diamond");
+
+        FeedbackText.enabled = false;
     }
 
     private void Update()
@@ -74,8 +78,9 @@ public class GameManager : MonoBehaviour
                 {
                     totalItems = newTotal;
                     inventory[item] += amount;
-
+                    StartCoroutine(DisplayLegacyText("+" + amount + item));
                     Debug.Log(item + " added to inventory: " + amount);
+                    
 
                     if (isInventoryActive)
                     {
@@ -206,6 +211,15 @@ public class GameManager : MonoBehaviour
                 break;
         }
       
+    }
+    private IEnumerator DisplayLegacyText(string displayText)
+    {
+        FeedbackText.text = displayText; // Mengatur teks yang akan ditampilkan
+        FeedbackText.enabled = true; // Mengaktifkan teks legacy
+
+        yield return new WaitForSeconds(2f); // Tunggu selama 1 detik
+
+        FeedbackText.enabled = false;
     }
 }
 

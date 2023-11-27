@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BronzeItem : MonoBehaviour
 {
@@ -19,11 +20,11 @@ public class BronzeItem : MonoBehaviour
 
     private Collider2D GetPlayerCollider()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f); 
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
 
         foreach (Collider2D collider in colliders)
         {
-            
+
             if (collider.CompareTag("Player"))
             {
                 return collider;
