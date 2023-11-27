@@ -23,7 +23,7 @@ public class BackgroundColor : MonoBehaviour
     void Update()
     {
        
-        if (player.position.y <= -1f)
+        if (player.position.y <= 3f)
         {
            
             ChangeBackgroundColor(brownColor);
