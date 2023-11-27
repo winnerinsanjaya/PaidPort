@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class FuelStation : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class FuelStation : MonoBehaviour
     [SerializeField]
     private GameObject GameScreen;
     public FuelBar fuelBar;
+    [SerializeField]
+    private Text FeedbackTextFuel;
 
     private bool inArea;
     int itemCost = 500;
@@ -69,14 +73,24 @@ public class FuelStation : MonoBehaviour
             
             GameManager.Instance.SubtractMoney(itemCost);
             fuelBar.ResetHealth();
+            StartCoroutine(DisplayLegacyText("Fuel bertambah"));
             Debug.Log("Fuel bertambah");
            
         }
         else
         {
-            
+            StartCoroutine(DisplayLegacyText("Uang tidak cukup"));
             Debug.Log("Uang tidak cukup");
         }
+    }
+    private IEnumerator DisplayLegacyText(string displayText)
+    {
+        FeedbackTextFuel.text = displayText; // Mengatur teks yang akan ditampilkan
+        FeedbackTextFuel.enabled = true; // Mengaktifkan teks legacy
+
+        yield return new WaitForSeconds(2f); // Tunggu selama 1 detik
+
+        FeedbackTextFuel.enabled = false;
     }
 }
 

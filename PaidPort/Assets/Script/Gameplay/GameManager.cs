@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
                 {
                     totalItems = newTotal;
                     inventory[item] += amount;
-                    StartCoroutine(DisplayLegacyText("+" + amount + item));
+                    StartCoroutine(DisplayLegacyText("+" + amount + " " + item));
                     Debug.Log(item + " added to inventory: " + amount);
                     
 
