@@ -37,7 +37,7 @@ public class CargoBuilding : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Time.timeScale = 0;
+                
                 CargoScreen.SetActive(true);
                 GameScreen.SetActive(false);
             }
@@ -45,7 +45,7 @@ public class CargoBuilding : MonoBehaviour
     }
     public void Exit()
     {
-        Time.timeScale = 1;
+        
         CargoScreen.SetActive(false);
         GameScreen.SetActive(true);
     }

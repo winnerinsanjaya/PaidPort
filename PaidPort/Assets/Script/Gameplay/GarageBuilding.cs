@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,8 +10,6 @@ public class GarageBuilding : MonoBehaviour
     private GameObject GarageCanvas;
     [SerializeField]
     private GameObject GarageScreen;
-    [SerializeField]
-    private GameObject GameScreen;
     [SerializeField]
     private GameObject ServiceScreen;
     [SerializeField]
@@ -44,6 +43,10 @@ public class GarageBuilding : MonoBehaviour
     [SerializeField]
     private Text upgradeCostTextFuel;
 
+
+    [SerializeField]
+    private Text FeedbackTextService;
+
     private bool isGarageScreenActive = false;
     private bool isServiceScreenActive = true;
     private bool isUpgradeScreenActive = false;
@@ -74,11 +77,11 @@ public class GarageBuilding : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Time.timeScale = 0;
+                
                 GarageScreen.SetActive(true);
                 ServiceScreen.SetActive(true);
-                GameScreen.SetActive(false);
                 isGarageScreenActive = true;
+                
             }
         }
         if (isGarageScreenActive && Input.GetKeyDown(KeyCode.Tab))
@@ -102,9 +105,9 @@ public class GarageBuilding : MonoBehaviour
     }
     public void Exit()
     {
-        Time.timeScale = 1;
+        
         GarageScreen.SetActive(false);
-        GameScreen.SetActive(true);
+        
     }
     public void ServiceButton()
     {
@@ -113,12 +116,13 @@ public class GarageBuilding : MonoBehaviour
 
             GameManager.Instance.SubtractMoney(500);
             healthBar.ResetHealth();
-            Debug.Log("Fuel bertambah");
+            StartCoroutine(DisplayLegacyTextService("Health bertambah"));
+            Debug.Log("Health bertambah");
 
         }
         else
         {
-
+            StartCoroutine(DisplayLegacyTextService("Uang tidak cukup"));
             Debug.Log("Uang tidak cukup");
         }
     }
@@ -199,6 +203,7 @@ public class GarageBuilding : MonoBehaviour
                 healthBar.currentHealth = 20;
                 healthBar.UpdateHealthBar();
                 GameManager.Instance.SubtractMoney(750);
+                Debug.Log("Berhasil Upgrade");
 
                 if (healthButton != null)
                 {
@@ -398,6 +403,15 @@ public class GarageBuilding : MonoBehaviour
                 Debug.Log("Uang tidak cukup untuk upgrade Drill ke level 4");
             }
         }
+    }
+    private IEnumerator DisplayLegacyTextService(string displayText)
+    {
+        FeedbackTextService.text = displayText; 
+        FeedbackTextService.enabled = true; 
+
+        yield return new WaitForSeconds(1f); 
+
+        FeedbackTextService.enabled = false;
     }
 }
 

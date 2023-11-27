@@ -10,8 +10,6 @@ public class FuelStation : MonoBehaviour
     private GameObject FuelCanvas;
     [SerializeField]
     private GameObject FuelScreen;
-    [SerializeField]
-    private GameObject GameScreen;
     public FuelBar fuelBar;
     [SerializeField]
     private Text FeedbackTextFuel;
@@ -53,17 +51,17 @@ public class FuelStation : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Time.timeScale = 0;
+                
                 FuelScreen.SetActive(true);
-                GameScreen.SetActive(false);
+                
             }
         }
     }
     public void Exit()
     {
-        Time.timeScale = 1;
+        
         FuelScreen.SetActive(false);
-        GameScreen.SetActive(true);
+        
     }
 
     public void Button()
@@ -85,10 +83,10 @@ public class FuelStation : MonoBehaviour
     }
     private IEnumerator DisplayLegacyText(string displayText)
     {
-        FeedbackTextFuel.text = displayText; // Mengatur teks yang akan ditampilkan
-        FeedbackTextFuel.enabled = true; // Mengaktifkan teks legacy
+        FeedbackTextFuel.text = displayText; 
+        FeedbackTextFuel.enabled = true;
 
-        yield return new WaitForSeconds(2f); // Tunggu selama 1 detik
+        yield return new WaitForSeconds(1f); 
 
         FeedbackTextFuel.enabled = false;
     }

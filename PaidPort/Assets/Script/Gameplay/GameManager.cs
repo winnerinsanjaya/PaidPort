@@ -12,7 +12,9 @@ public class GameManager : MonoBehaviour
     public int totalItems = 0;
     private int money = 10000;
     [SerializeField]
-    private Text FeedbackText;
+    private Text FeedbackTextItem;
+    [SerializeField]
+    private Text FeedbackTextSell;
 
     public Canvas inventoryCanvas;
     public Text bronzeCountText;
@@ -51,7 +53,7 @@ public class GameManager : MonoBehaviour
         UpdateItemCountText("Gold");
         UpdateItemCountText("Diamond");
 
-        FeedbackText.enabled = false;
+        FeedbackTextItem.enabled = false;
     }
 
     private void Update()
@@ -78,7 +80,7 @@ public class GameManager : MonoBehaviour
                 {
                     totalItems = newTotal;
                     inventory[item] += amount;
-                    StartCoroutine(DisplayLegacyText("+" + amount + " " + item));
+                    StartCoroutine(DisplayLegacyTextAddItem("+" + amount + " " + item));
                     Debug.Log(item + " added to inventory: " + amount);
                     
 
@@ -107,16 +109,32 @@ public class GameManager : MonoBehaviour
     {
         int totalValue = 0;
         List<string> itemsToSell = new List<string>(inventory.Keys);
+        bool itemsSold = false;
+
         foreach (var item in itemsToSell)
         {
-            totalValue += inventory[item] * GetValueOfItem(item);
-            inventory[item] = 0; 
+            int itemCount = inventory[item];
+            if (itemCount > 0)
+            {
+                totalValue += itemCount * GetValueOfItem(item);
+                inventory[item] = 0;
+                itemsSold = true;
+            }
         }
 
-        money += totalValue;
-        SaveMoney(money);
-        UpdateMoneyText();
-        Debug.Log("Sold all items for: " + totalValue + " money.");
+        if (itemsSold)
+        {
+            money += totalValue;
+            SaveMoney(money);
+            UpdateMoneyText();
+            StartCoroutine(DisplayLegacyTextSellItem("Terjual dengan harga: " + totalValue + "Gc"));
+            Debug.Log("Sold all items for: " + totalValue + " money.");
+        }
+        else
+        {
+            StartCoroutine(DisplayLegacyTextSellItem("Tidak ada Material untuk dijual"));
+            Debug.Log("Tidak ada Material untuk dijual.");
+        }
     }
     private int GetValueOfItem(string item)
     {
@@ -149,7 +167,6 @@ public class GameManager : MonoBehaviour
         money -= amount;
         SaveMoney(money);
         UpdateMoneyText();
-
         Debug.Log("Pemain memiliki sekarang: " + money + " uang.");
     }
 
@@ -212,14 +229,23 @@ public class GameManager : MonoBehaviour
         }
       
     }
-    private IEnumerator DisplayLegacyText(string displayText)
+    private IEnumerator DisplayLegacyTextAddItem(string displayText)
     {
-        FeedbackText.text = displayText; // Mengatur teks yang akan ditampilkan
-        FeedbackText.enabled = true; // Mengaktifkan teks legacy
+        FeedbackTextItem.text = displayText; 
+        FeedbackTextItem.enabled = true; 
 
-        yield return new WaitForSeconds(2f); // Tunggu selama 1 detik
+        yield return new WaitForSeconds(1f); 
 
-        FeedbackText.enabled = false;
+        FeedbackTextItem.enabled = false;
+    }
+    private IEnumerator DisplayLegacyTextSellItem(string displayText)
+    {
+        FeedbackTextSell.text = displayText; 
+        FeedbackTextSell.enabled = true;
+
+        yield return new WaitForSeconds(2f);
+
+        FeedbackTextSell.enabled = false;
     }
 }
 
