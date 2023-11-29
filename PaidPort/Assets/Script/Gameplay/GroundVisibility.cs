@@ -12,10 +12,10 @@ public class GroundVisibility : MonoBehaviour
     private bool isWithinVision = true;
     private Collider2D playerCollider;
 
-    private float visionRange = 4.1f;
-    private float overlayRadius = 1.2f;
+    private float visionRange = 5f;
+    private float overlayRadius = 1f;
 
-    private float permanentSeenRadius = 0.1f;
+    private float permanentSeenRadius = 0.2f;
 
     private bool hasBeenSeen = false;
     private bool permanentSeen = false;
