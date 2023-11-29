@@ -9,7 +9,7 @@ public class FuelBar : MonoBehaviour
     public int totalFuel = 100;
     public int currentFuel;
 
-    public float damageInterval = 2f; // Interval waktu antara damage
+    public float damageInterval = 2f; 
     private float nextDamageTime;
 
     public Image fuelBarImage;
@@ -22,10 +22,10 @@ public class FuelBar : MonoBehaviour
 
     void Update()
     {
-        // Tes fungsi damage setiap beberapa detik
+       
         if (Time.time >= nextDamageTime)
         {
-            TakeDamage(5); // Ganti dengan jumlah damage yang diinginkan
+            TakeDamage(5);
             nextDamageTime = Time.time + damageInterval;
         }
     }
@@ -35,7 +35,7 @@ public class FuelBar : MonoBehaviour
         currentFuel -= damage;
         UpdateFuelBar();
 
-        // Cek jika player mati
+       
         if (currentFuel <= 0)
         {
             Die();
@@ -44,10 +44,9 @@ public class FuelBar : MonoBehaviour
 
     void Die()
     {
-        // Implementasi kematian player, misalnya memanggil fungsi respawn
-        // atau menampilkan layar game over
+        GameManager.Instance.GameOver();
         Debug.Log("Player Mati");
-        // Tambahkan kode kematian di sini sesuai kebutuhan game Anda
+       
     }
 
     public void UpdateFuelBar()
@@ -60,7 +59,7 @@ public class FuelBar : MonoBehaviour
         currentFuel = totalFuel;
         UpdateFuelBar();
         Debug.Log("Health direset ke nilai awal: " + currentFuel);
-        // Tambahkan logika lain yang diperlukan setelah reset health
+        
     }
 
 }

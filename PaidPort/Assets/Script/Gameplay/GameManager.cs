@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     public Text diamondCountText;
     public Text MoneyText;
 
+    public GameObject GameOverScreen;
+    public GameObject GameScreen;
+
     private bool isInventoryActive = false;
 
     private void Awake()
@@ -246,6 +249,13 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         FeedbackTextSell.enabled = false;
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 0f;
+        GameOverScreen.SetActive (true);
+        GameScreen.SetActive (false);
     }
 }
 

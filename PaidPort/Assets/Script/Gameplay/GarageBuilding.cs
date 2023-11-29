@@ -409,7 +409,7 @@ public class GarageBuilding : MonoBehaviour
         FeedbackTextService.text = displayText; 
         FeedbackTextService.enabled = true; 
 
-        yield return new WaitForSeconds(1f); 
+        yield return new WaitForSeconds(2f); 
 
         FeedbackTextService.enabled = false;
     }

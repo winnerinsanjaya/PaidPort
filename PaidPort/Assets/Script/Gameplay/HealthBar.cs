@@ -25,7 +25,7 @@ public class HealthBar : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth); // Memastikan health tidak kurang dari 0 atau lebih dari maxHealth
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthBar();
 
         if (currentHealth <= 0)
@@ -36,16 +36,16 @@ public class HealthBar : MonoBehaviour
 
     void Die()
     {
-        // Implementasi aksi ketika pemain mati, misalnya mengubah scene atau menampilkan pesan kalah
+        GameManager.Instance.GameOver();
         Debug.Log("Player mati");
-        // Misalnya: UnityEngine.SceneManagement.SceneManager.LoadScene("GameOverScene");
+       
     }
     public void ResetHealth()
     {
         currentHealth = maxHealth;
         UpdateHealthBar();
         Debug.Log("Health direset ke nilai awal: " + currentHealth);
-        // Tambahkan logika lain yang diperlukan setelah reset health
+       
     }
 
     public void UpdateHealthBar()

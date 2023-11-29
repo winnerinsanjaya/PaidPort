@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class DayNightCycle : MonoBehaviour
@@ -16,8 +17,10 @@ public class DayNightCycle : MonoBehaviour
     private int currentDay = 1;
     private string[] dayNames;
     private string[] dailyDebts;
-    private float updateInterval = 0.5f;
+    private float updateInterval = -5f;
     private float timeSinceLastUpdate = 0f;
+    [SerializeField]
+    private Text FeedbackTextDay;
 
     void Start()
     {
@@ -131,17 +134,28 @@ public class DayNightCycle : MonoBehaviour
                 {
                     
                     gameManager.SubtractMoney(currentDebt);
+                    StartCoroutine(DisplayLegacyTextDay("Berhasil Membayar Hutang" ));
                     Debug.Log("Pengurangan hutang sebesar " + currentDebt + "Gc dari pemain pada jam 23:59.");
                 }
                 else
                 {
-                    Time.timeScale = 0;
+                    StartCoroutine(DisplayLegacyTextDay("Kamu gagal Membayar Hutang T_T" ));
+                    GameManager.Instance.GameOver();
                     Debug.Log("Uang tidak cukup untuk membayar hutang hari ini.");
                     enabled = false;
                     return;
                 }
             }
         }
+    }
+    private IEnumerator DisplayLegacyTextDay(string displayText)
+    {
+        FeedbackTextDay.text = displayText;
+        FeedbackTextDay.enabled = true;
+
+        yield return new WaitForSeconds(2f);
+
+        FeedbackTextDay.enabled = false;
     }
 }
 

@@ -86,7 +86,7 @@ public class FuelStation : MonoBehaviour
         FeedbackTextFuel.text = displayText; 
         FeedbackTextFuel.enabled = true;
 
-        yield return new WaitForSeconds(1f); 
+        yield return new WaitForSeconds(2f); 
 
         FeedbackTextFuel.enabled = false;
     }

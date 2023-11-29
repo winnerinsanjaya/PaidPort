@@ -20,21 +20,20 @@ public class GroundHealth : MonoBehaviour
     {
         if (Time.time - lastDamageTime >= healDelay)
         {
-            // Pemulihan kesehatan jika sudah cukup waktu
+            
             currentHealth = Mathf.Min(currentHealth + (Time.deltaTime / healDelay) * maxHealth, maxHealth);
         }
     }
 
     public void TakeDamage(float damage)
     {
-        // Kurangi hp ground berdasarkan jumlah kerusakan yang diberikan
+        
         currentHealth -= damage;
         lastDamageTime = Time.time;
 
-        // Cek jika hp ground sudah habis
+       
         if (currentHealth <= 0)
         {
-            // Hancurkan ground
             Destroy(gameObject);
         }
     }
