@@ -21,6 +21,12 @@ public class DayNightCycle : MonoBehaviour
     private float timeSinceLastUpdate = 0f;
     [SerializeField]
     private Text FeedbackTextDay;
+    [SerializeField]
+    private GameObject Day;
+    [SerializeField]
+    private GameObject Night;
+    [SerializeField]
+    private GameObject NighLight;
 
     void Start()
     {
@@ -97,6 +103,20 @@ public class DayNightCycle : MonoBehaviour
         if (currentHour == 23 && currentMinute == 59)
         {
             SubtractDebtFromPlayer(); 
+        }
+        timeText.text = currentHour.ToString("00") + ":" + currentMinute.ToString("00");
+        if (currentHour == 7 && currentMinute == 00)
+        {
+           Night.SetActive(false);
+            NighLight.SetActive(false);
+            Day.SetActive(true);
+        }
+        timeText.text = currentHour.ToString("00") + ":" + currentMinute.ToString("00");
+        if (currentHour == 18 && currentMinute == 00)
+        {
+            Day.SetActive(false);
+            NighLight.SetActive(true);
+            Night.SetActive(true);
         }
     }
 
