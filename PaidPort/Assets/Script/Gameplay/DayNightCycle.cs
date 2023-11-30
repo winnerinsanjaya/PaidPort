@@ -107,7 +107,7 @@ public class DayNightCycle : MonoBehaviour
         timeText.text = currentHour.ToString("00") + ":" + currentMinute.ToString("00");
         if (currentHour == 7 && currentMinute == 00)
         {
-           Night.SetActive(false);
+            Night.SetActive(false);
             NighLight.SetActive(false);
             Day.SetActive(true);
         }
